@@ -14,11 +14,12 @@ namespace HelloWorldApp
             {
                 nationalities = new List<string>()
                 {
-                    "Australian",
+                     "Australian",
                      "Mongolian",
                      "Russian",
                      "Austrian",
-                     "Brazilian"
+                     "Brazilian",
+                     "Spanish"
                  };
             }
             initList();
