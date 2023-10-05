@@ -7,8 +7,8 @@
     <ProjectGuid>{6E589142-7ABE-4A9E-A8C8-6BE35A40E6FE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ClassLibrary</RootNamespace>
-    <AssemblyName>ClassLibrary</AssemblyName>
+    <RootNamespace>UPVTube</RootNamespace>
+    <AssemblyName>UPVTubeLib</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -41,10 +41,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BusinessLogic\Class1.cs" />
-    <Compile Include="Class1.cs" />
-    <Compile Include="Persistence\Class1.cs" />
+    <Compile Include="BusinessLogic\Entities\Comment.cs" />
+    <Compile Include="BusinessLogic\Entities\Content.cs" />
+    <Compile Include="BusinessLogic\Entities\Evaluation.cs" />
+    <Compile Include="BusinessLogic\Entities\Member.cs" />
+    <Compile Include="BusinessLogic\Entities\Subject.cs" />
+    <Compile Include="BusinessLogic\Entities\Visualization.cs" />
+    <Compile Include="Persistence\Entities\Authorized.cs" />
+    <Compile Include="Persistence\Entities\Comment.cs" />
+    <Compile Include="Persistence\Entities\Content.cs" />
+    <Compile Include="Persistence\Entities\Evaluation.cs" />
+    <Compile Include="Persistence\Entities\Member.cs" />
+    <Compile Include="Persistence\Entities\Subject.cs" />
+    <Compile Include="Persistence\Entities\Visualization.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="BusinessLogic\Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
