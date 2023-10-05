@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClassLibrary
+namespace UPVTube.Entities
 {
-    internal class Class1
+    public partial class Comment
     {
     }
 }
