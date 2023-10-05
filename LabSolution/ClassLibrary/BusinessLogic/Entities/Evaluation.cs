@@ -8,14 +8,16 @@ namespace UPVTube.Entities
 {
     public partial class Evaluation
     {
+
         public Evaluation() { }
 
-        public Evaluation(DateTime e, string r, Content c, Member m) : this()
-        {
-            EvaluationDate = e;
-            RejectionReason = r;
-            content = c;
-            member = m;
+        public Evaluation(Member Censor, Content content, DateTime EvaluationDate, int Id, string RejectionReason):this() {
+        
+            this.censor = Censor;
+            this.content = content;
+            this.EvaluationDate = EvaluationDate;
+            this.Id = Id;
+            this.RejectionReason = RejectionReason;
         }
     }
 }
