@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClassLibrary.Persistence
+namespace UPVTube.Persistence.Entities
 {
-    internal class Class1
+    internal class Evaluation
     {
     }
 }
