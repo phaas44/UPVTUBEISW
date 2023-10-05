@@ -8,15 +8,13 @@ namespace UPVTube.Entities
 {
     public partial class Visualization
     {
-        public Visualization() {
-            Contents = new List<Content>();
-            Members = new List<Member>();
+        public Visualization() { }
 
-        }
-
-        public Visualization(int Id, DateTime VisualizationDate) : this()
+        public Visualization(int Id, Content content, Member member, DateTime VisualizationDate) : this()
         {
             this.Id = Id;
+            this.content = content;
+            this.member = member;
             this.VisualizationDate = VisualizationDate;
         }
     }
