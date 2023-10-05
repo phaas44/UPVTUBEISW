@@ -8,8 +8,8 @@ namespace UPVTube.Entities
 {
     public partial class Visualization
     {
-        public virtual ICollection<Member> Members{ get; set; }
-        public virtual ICollection<Content> Contents{ get; set; }
+        public virtual Member member{ get; set; }
+        public virtual Content content{ get; set; }
 
         public int Id { get; set; }
 
