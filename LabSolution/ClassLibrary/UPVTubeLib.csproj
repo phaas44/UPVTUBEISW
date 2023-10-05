@@ -41,13 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BusinessLogic\Class1.cs" />
     <Compile Include="BusinessLogic\Entities\Comment.cs" />
     <Compile Include="BusinessLogic\Entities\Content.cs" />
     <Compile Include="BusinessLogic\Entities\Evaluation.cs" />
     <Compile Include="BusinessLogic\Entities\Member.cs" />
     <Compile Include="BusinessLogic\Entities\Subject.cs" />
     <Compile Include="BusinessLogic\Entities\Visualization.cs" />
+    <Compile Include="Persistence\Entities\Authorized.cs" />
     <Compile Include="Persistence\Entities\Comment.cs" />
     <Compile Include="Persistence\Entities\Content.cs" />
     <Compile Include="Persistence\Entities\Evaluation.cs" />
