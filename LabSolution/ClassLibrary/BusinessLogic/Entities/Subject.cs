@@ -10,7 +10,7 @@ namespace UPVTube.Entities
     {
         public Subject()
         {
-            this.Contents = new List<Content>;
+            this.Contents = new List<Content>();
         }
 
         public Subject(int c, string fn, string n) : this()

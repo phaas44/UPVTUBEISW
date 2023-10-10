@@ -9,9 +9,9 @@ namespace UPVTube.Entities
     public partial class Content
     {
         public Content(){
-            Subjects = new List<Subject>;
-            Comments = new List<Comment>;
-            Visualizations = new List<Visualization>;
+            Subjects = new List<Subject>();
+            Comments = new List<Comment>();
+            Visualizations = new List<Visualization>();
         }
 
         public Content(string uri, string d, bool p, string t, DateTime upload, Member member) : this() {
@@ -20,7 +20,7 @@ namespace UPVTube.Entities
             this.Description = d;
             this.IsPublic = p;
             this.Title = t;
-            this.UploadTime = upload;
+            this.UploadDate = upload;
             this.Owner = member;
             
             if (isTeacherDomain(o.Email)) {
