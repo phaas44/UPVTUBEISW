@@ -11,9 +11,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentatio
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{E23BBA3D-B271-4C99-BB3C-8182DFEE0283}"
-	ProjectSection(SolutionItems) = preProject
-		Class2.cs = Class2.cs
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPVTubeLib", "ClassLibrary\UPVTubeLib.csproj", "{6E589142-7ABE-4A9E-A8C8-6BE35A40E6FE}"
 EndProject
