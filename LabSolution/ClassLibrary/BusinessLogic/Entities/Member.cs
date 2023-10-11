@@ -10,12 +10,12 @@ namespace UPVTube.Entities
     {
         public Member()
         {
-            Subscriptors = new List<Member>;
-            SubscribedTo = new List<Member>;
-            Evaluations = new List<Evaluation>;
-            Comments = new List<Comment>;
-            Contents = new List<Content>;
-            Visualizations = new List<Visualization>;
+            Subscriptors = new List<Member>();
+            SubscribedTo = new List<Member>();
+            Evaluations = new List<Evaluation>();
+            Comments = new List<Comment>();
+            Contents = new List<Content>();
+            Visualizations = new List<Visualization>();
         }
         public Member(string email, string name, DateTime date, string nick, string pass) : this()
         {
