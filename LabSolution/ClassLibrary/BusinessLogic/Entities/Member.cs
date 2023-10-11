@@ -8,5 +8,23 @@ namespace UPVTube.Entities
 {
     public partial class Member
     {
+        public Member()
+        {
+            Subscriptors = new List<Member>;
+            SubscribedTo = new List<Member>;
+            Evaluations = new List<Evaluation>;
+            Comments = new List<Comment>;
+            Contents = new List<Content>;
+            Visualizations = new List<Visualization>;
+        }
+        public Member(string email, string name, DateTime date, string nick, string pass) : this()
+        {
+
+            Email = email;
+            FullName = name;
+            LastAccessDate = date;
+            Nick = nick;
+            Password = pass;
+        }
     }
 }
