@@ -8,5 +8,9 @@ namespace UPVTube.Entities
 {
     public partial class Evaluation
     {
+        public DateTime EvaluationDate { get; set; }
+        public string RejectionReason { get; set; }
+        public Content content { get; set; }
+        public Member member { get; set; }
     }
 }
