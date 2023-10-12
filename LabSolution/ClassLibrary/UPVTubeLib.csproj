@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="BusinessLogic\Entities\Comment.cs" />
     <Compile Include="BusinessLogic\Entities\Content.cs" />
+    <Compile Include="BusinessLogic\Entities\Domains.cs" />
     <Compile Include="BusinessLogic\Entities\Evaluation.cs" />
     <Compile Include="BusinessLogic\Entities\Member.cs" />
     <Compile Include="BusinessLogic\Entities\Subject.cs" />
