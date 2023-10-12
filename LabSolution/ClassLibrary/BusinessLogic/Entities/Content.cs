@@ -23,7 +23,7 @@ namespace UPVTube.Entities
             this.UploadDate = upload;
             this.Owner = member;
             
-            if (isTeacherDomain(member.Email)) {
+            if (Domains.IsTeacherDomain(member.Email)) {
                 this.Authorized = Authorized.Yes;
             } else {
                 this.Authorized = Authorized.Pending;
