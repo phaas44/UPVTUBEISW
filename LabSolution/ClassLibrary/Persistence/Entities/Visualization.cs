@@ -8,11 +8,12 @@ namespace UPVTube.Entities
 {
     public partial class Visualization
     {
-        public virtual Member member{ get; set; }
-        public virtual Content content{ get; set; }
-
         public int Id { get; set; }
 
         public DateTime VisualizationDate { get; set; }
+
+        public virtual Content content { get; set; }
+        public virtual Member member{ get; set; }
+        
     }
 }
