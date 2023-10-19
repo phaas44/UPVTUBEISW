@@ -62,7 +62,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LabSolution\ClassLibrary\UPVTubeLib.csproj">
+    <ProjectReference Include="..\ClassLibrary\UPVTubeLib.csproj">
       <Project>{6e589142-7abe-4a9e-a8c8-6be35a40e6fe}</Project>
       <Name>UPVTubeLib</Name>
     </ProjectReference>

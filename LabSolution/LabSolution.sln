@@ -18,7 +18,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lab1", "Lab1", "{57FA3F51-0
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWorldApp", "HelloWorldApp\HelloWorldApp.csproj", "{5203D863-184E-4967-B20E-FE23270AE255}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPVTubeObjectDesignTests", "..\UPVTubeObjectDesignTests\UPVTubeObjectDesignTests.csproj", "{48E97C2A-5638-42CF-B6F9-62EFF5DBBA34}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPVTubeObjectDesignTests", "UPVTubeObjectDesignTests\UPVTubeObjectDesignTests.csproj", "{48E97C2A-5638-42CF-B6F9-62EFF5DBBA34}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
