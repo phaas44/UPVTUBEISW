@@ -12,8 +12,8 @@ namespace UPVTube.Entities
 
         public DateTime VisualizationDate { get; set; }
 
-        public virtual Content content { get; set; }
-        public virtual Member member{ get; set; }
+        public virtual Content Content { get; set; }
+        public virtual Member Member{ get; set; }
         
     }
 }

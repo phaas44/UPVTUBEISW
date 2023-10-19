@@ -8,7 +8,7 @@ namespace UPVTube.Entities
 {
     public partial class Content
     {
-        public virtual Authorized Authorized { get; set; }
+        public Authorized Authorized { get; set; }
         public string ContentURI { get; set; }
         public string Description { get; set; }
         public int Id { get; set; }
