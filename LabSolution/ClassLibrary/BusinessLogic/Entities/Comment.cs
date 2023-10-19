@@ -10,13 +10,13 @@ namespace UPVTube.Entities
     {
         public Comment() { }
         
-        public Comment(int Id, string Text, DateTime WritingDate, Member member, Content content) : this()
+        public Comment(string Text, DateTime WritingDate, Content content, Member member) : this()
         {
-            this.Id = Id;
+            
             this.Text = Text;
             this.WritingDate = WritingDate;
-            this.member = member;
-            this.content = content; 
+            this.Member = member;
+            this.Content = content; 
         }
 
     }
