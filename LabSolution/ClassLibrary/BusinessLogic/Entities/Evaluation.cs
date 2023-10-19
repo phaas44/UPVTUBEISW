@@ -11,10 +11,9 @@ namespace UPVTube.Entities
 
         public Evaluation() { }
 
-        public Evaluation(DateTime EvaluationDate, int Id, string RejectionReason, Member Censor, Content content):this() {
+        public Evaluation(DateTime EvaluationDate, string RejectionReason, Content content, Member Censor):this() {
         
             this.EvaluationDate = EvaluationDate;
-            this.Id = Id;
             this.RejectionReason = RejectionReason;
             this.content = content;
             this.member = Censor;
