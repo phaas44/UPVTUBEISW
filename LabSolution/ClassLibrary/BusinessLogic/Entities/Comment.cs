@@ -15,7 +15,7 @@ namespace UPVTube.Entities
             
             this.Text = Text;
             this.WritingDate = WritingDate;
-            this.Member = member;
+            this.Writer = member;
             this.Content = content; 
         }
 

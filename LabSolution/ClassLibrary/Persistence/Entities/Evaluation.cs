@@ -11,7 +11,7 @@ namespace UPVTube.Entities
         public DateTime EvaluationDate { get; set; }
         public int Id { get; set; }
         public string RejectionReason { get; set; }
-        public virtual Content content { get; set; }
-        public virtual Member member { get; set; }
+        public virtual Content Content { get; set; }
+        public virtual Member Censor { get; set; }
     }
 }
