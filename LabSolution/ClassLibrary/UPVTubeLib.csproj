@@ -65,11 +65,14 @@
     <Compile Include="Persistence\Entities\Member.cs" />
     <Compile Include="Persistence\Entities\Subject.cs" />
     <Compile Include="Persistence\Entities\Visualization.cs" />
+    <Compile Include="Persistence\EntityFrameworkImp\DbContextISW.cs" />
+    <Compile Include="Persistence\EntityFrameworkImp\EntityFrameworkDAL.cs" />
+    <Compile Include="Persistence\EntityFrameworkImp\IDAL.cs" />
+    <Compile Include="Persistence\EntityFrameworkImp\UPVTubeDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BusinessLogic\Services\" />
-    <Folder Include="Persistence\EntityFrameworkImp\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
