@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace UPVTube.Entities
 {
     public partial class Member
     {
+        [Key]
         public string Email { get; set; }
+
         public string FullName { get; set; }
         public DateTime LastAccessDate { get; set; }
         public string Nick { get; set; }
