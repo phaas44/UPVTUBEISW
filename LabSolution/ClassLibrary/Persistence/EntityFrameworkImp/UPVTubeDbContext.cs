@@ -9,6 +9,13 @@ namespace UPVTube.Persistence
 {
     public class UPVTubeDbContext : DbContextISW
     {
+        public DbSet<Subject> Subjects { get; set; }
+        public DbSet<Member> Members { get; set; }
+        public DbSet<Content> Contents { get; set; }
+        public DbSet<Visualization> Visualizations { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<Evaluation> Evaluations { get; set; }
+
         public UPVTubeDbContext() : base("Name=UPVTubeDbConnection") //this is the connection string name
         {
             /*
