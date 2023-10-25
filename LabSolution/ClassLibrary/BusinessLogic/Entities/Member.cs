@@ -26,5 +26,11 @@ namespace UPVTube.Entities
             Nick = nick;
             Password = pass;
         }
+
+        public void AddContent(Content c)
+        {
+            this.Contents.Add(c);
+            c.Owner = this;
+        }
     }
 }

@@ -9,11 +9,11 @@ namespace UPVTube.Entities
 {
     public partial class Member
     {
-        [Key]
         public string Email { get; set; }
 
         public string FullName { get; set; }
         public DateTime LastAccessDate { get; set; }
+        [Key]
         public string Nick { get; set; }
         public string Password { get; set; }
         public virtual ICollection<Content> Contents { get; set; }
