@@ -30,7 +30,6 @@ namespace UPVTube.Entities
         public void AddContent(Content c)
         {
             this.Contents.Add(c);
-            c.Owner = this;
         }
     }
 }
