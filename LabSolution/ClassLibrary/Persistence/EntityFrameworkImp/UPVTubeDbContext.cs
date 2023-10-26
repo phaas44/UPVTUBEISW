@@ -9,6 +9,7 @@ namespace UPVTube.Persistence
 {
     public class UPVTubeDbContext : DbContextISW
     {
+        
         public UPVTubeDbContext() : base("Name=UPVTubeDbConnection") //this is the connection string name
         {
             /*
@@ -28,7 +29,12 @@ namespace UPVTube.Persistence
         }
 
         // DbSets for persistent classes in your case study
-        // To Do
+        public DbSet<Subject> Subjects { get; set; }
+        public DbSet<Member> Members { get; set; }
+        public DbSet<Content> Contents { get; set; }
+        public DbSet<Visualization> Visualizations { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<Evaluation> Evaluations { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
