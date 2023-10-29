@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UPVTube.Persistence;
-using UPVTube.BusinessLogic;
 using UPVTube.Entities;
 
-namespace UPVTube.BusinessLogic.Services
+namespace UPVTube.Services
 {
     public class UPVTubeService: IUPVTubeService
     {

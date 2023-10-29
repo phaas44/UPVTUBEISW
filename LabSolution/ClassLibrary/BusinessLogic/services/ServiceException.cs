@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace UPVTube.BusinessLogic.Services
+namespace UPVTube.Services
 
 {
     public class ServiceException : Exception

@@ -4,11 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UPVTube.BusinessLogic.Services
+namespace UPVTube.Services
 {
     public interface IUPVTubeService
     {
         void registerNewUser(string email, string name, DateTime date, string nick, string password);
+
+        void removeAllData();
+
 
     }
 }
