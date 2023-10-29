@@ -12,6 +12,8 @@ namespace UPVTube.Services
 
         void removeAllData();
 
+        void loginUser(string nick, string password);
+
 
     }
 }

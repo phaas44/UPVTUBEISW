@@ -8,7 +8,7 @@ using UPVTube.Entities;
 
 namespace UPVTube.Services
 {
-    public class UPVTubeService: IUPVTubeService
+    public class UPVTubeService : IUPVTubeService
     {
 
         private readonly IDAL dal;
@@ -41,6 +41,31 @@ namespace UPVTube.Services
             }
 
             else throw new ServiceException("Member already exists.");
+        }
+
+        public void loginUser(string nick, string password)
+        {
+            //Check if user is not registered: throw error
+            if (dal.GetById<Member>(nick) == null)
+            {
+                throw new ServiceException("Member not registered!");
+            }
+
+            //User is registered: ask for credentials
+
+            if (dal.GetById<Member>(nick).Password != password)
+            {
+                throw new ServiceException("Provided nick or password is wrong!");
+            }
+
+
+            //If all check succeed, we add user to session
+
+            //Load Member object from database
+
+            Member user = dal.GetById<Member>(nick);
+            this.User = user;
+
         }
 
 
