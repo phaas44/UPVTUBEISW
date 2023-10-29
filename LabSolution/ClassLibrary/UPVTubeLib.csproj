@@ -58,6 +58,9 @@
     <Compile Include="BusinessLogic\Entities\Member.cs" />
     <Compile Include="BusinessLogic\Entities\Subject.cs" />
     <Compile Include="BusinessLogic\Entities\Visualization.cs" />
+    <Compile Include="BusinessLogic\Services\ServiceException.cs" />
+    <Compile Include="BusinessLogic\Services\UPVTubeService.cs" />
+    <Compile Include="BusinessLogic\Services\IUPVTubeService.cs" />
     <Compile Include="Persistence\Entities\Authorized.cs" />
     <Compile Include="Persistence\Entities\Comment.cs" />
     <Compile Include="Persistence\Entities\Content.cs" />
@@ -71,9 +74,7 @@
     <Compile Include="Persistence\EntityFrameworkImp\UPVTubeDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="BusinessLogic\Services\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
