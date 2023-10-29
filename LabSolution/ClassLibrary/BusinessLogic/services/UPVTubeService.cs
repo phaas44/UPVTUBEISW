@@ -12,6 +12,7 @@ namespace UPVTube.Services
     {
 
         private readonly IDAL dal;
+        public Member User { get; set; }
 
         public UPVTubeService(IDAL dal) {
             this.dal = dal;
@@ -39,7 +40,7 @@ namespace UPVTube.Services
                 dal.Commit();
             }
 
-            else throw new ServiceException("Person already exists.");
+            else throw new ServiceException("Member already exists.");
         }
 
 
