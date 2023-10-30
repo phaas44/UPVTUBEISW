@@ -68,6 +68,15 @@ namespace UPVTube.Services
 
         }
 
+        public bool isloggedin()
+        {
+            if (this.User != null)
+            {
+                return true;
+            }
+            else return false;
+        }
+
 
     }
 }

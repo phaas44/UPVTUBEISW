@@ -14,6 +14,8 @@ namespace UPVTube.Services
 
         void loginUser(string nick, string password);
 
+        bool isloggedin();
+
 
     }
 }
