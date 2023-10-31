@@ -68,13 +68,19 @@ namespace UPVTube.Services
 
         }
 
-        public bool isloggedin()
+        public bool isLoggedIn(Member user)
         {
-            if (this.User != null)
+            // Check if there is a possible user that is logged in.
+            if (this.User == null)
             {
-                return true;
+                return false;
             }
-            else return false;
+            else
+            {
+                throw new ServiceException("User is indeed logged in.");
+                return this.User.Nick == user.Nick;
+
+            }
         }
 
 
