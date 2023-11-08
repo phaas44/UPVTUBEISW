@@ -31,5 +31,16 @@ namespace UPVTube.Entities
         {
             this.Contents.Add(c);
         }
+        public void AddComment(Comment c)
+        {
+           this.Comments.Add(c); 
+        }
+        public void AddEvaluation(Evaluation e)
+        {
+            this.Evaluations.Add(e);
+        }
+
+
+            
     }
 }

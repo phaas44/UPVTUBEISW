@@ -91,8 +91,8 @@ namespace DBTest
             // public Member(String email, string fullName, DateTime lastAccessDate, string nick, string password)
             
             Member a1 = new Member("bart@inf.upv.es", "Bart Simpson", DateTime.Now, "Bart", "1234");
-            dal.Insert<Member>(a1);
-            dal.Commit();
+            dal.Insert<Member>(a1); //adding to the DBset 
+            dal.Commit(); //adding to database
             
             Console.WriteLine("\n// CREATING A CONTENT");
             
@@ -108,6 +108,30 @@ namespace DBTest
             Console.ReadKey();
 
             // Populate here the rest of the database with data
+
+            //adding a comment to content c1
+            Comment comment = new Comment("Very good video", DateTime.Now, c1, a1);
+            a1.AddComment(comment); 
+            dal.Insert<Comment>(comment);
+            dal.Commit();
+
+            // Creating a professor 
+            Member professor = new Member("fjaen@dsic.upv.es", "Javier Jaen", DateTime.Now, "fjaen", "password");
+            dal.Insert<Member>(professor);
+            dal.Commit();
+
+            //Adding an evaluation
+            Evaluation eval = new Evaluation(DateTime.Now, "Accepted", professor, c1);
+            professor.AddEvaluation(eval);
+            c1.Evaluation = eval;
+            c1.Authorized = Authorized.Yes; 
+            dal.Insert<Evaluation>(eval);
+            dal.Commit();
+
+
+
+          
+
 
 
         }
