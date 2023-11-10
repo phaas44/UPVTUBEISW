@@ -77,7 +77,7 @@ namespace UPVTube.Services
             }
             else
             {
-                throw new ServiceException("User is indeed logged in.");
+                //throw new ServiceException("User is indeed logged in.");
                 return this.User.Nick == user.Nick;
 
             }
