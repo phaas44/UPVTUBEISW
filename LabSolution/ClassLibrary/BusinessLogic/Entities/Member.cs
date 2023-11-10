@@ -39,6 +39,10 @@ namespace UPVTube.Entities
         {
             this.Evaluations.Add(e);
         }
+        public void AddVisualization(Visualization v)
+        {
+            this.Visualizations.Add(v);
+        }
 
 
             
