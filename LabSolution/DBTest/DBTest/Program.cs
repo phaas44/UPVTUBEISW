@@ -63,7 +63,7 @@ namespace DBTest
         {
             IDAL dal = new EntityFrameworkDAL(new UPVTubeDbContext());
 
-            UPVTubeService service = new UPVTubeService(dal);
+            //UPVTubeService service = new UPVTubeService(dal);
 
             //// This works and adds a new user to the database.
             ////service.registerNewUser("bla", "Jesus", DateTime.Now, "hellow", "passwd");
