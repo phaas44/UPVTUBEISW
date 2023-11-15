@@ -61,7 +61,7 @@ namespace DBTest
 
         Program()
         {
-            //IDAL dal = new EntityFrameworkDAL(new UPVTubeDbContext());
+            IDAL dal = new EntityFrameworkDAL(new UPVTubeDbContext());
 
             //UPVTubeService service = new UPVTubeService(dal);
 
@@ -77,7 +77,7 @@ namespace DBTest
             ////isLoggedIn?
             //service.isLoggedIn(a);
 
-            //CreateSampleDB(dal);
+            CreateSampleDB(dal);
 
         }
 
@@ -105,36 +105,48 @@ namespace DBTest
 
             Console.WriteLine("A new video has been uploaded to: " + c1.ContentURI + " created by " + c1.Owner.FullName);
             
-            Console.ReadKey();
+            //Console.ReadKey();
 
             // Populate here the rest of the database with data
 
             //adding a comment to content c1
-            Comment comment = new Comment("Very good video", DateTime.Now, c1, a1);
-            a1.AddComment(comment); 
-            dal.Insert<Comment>(comment);
+            Comment cm1 = new Comment("Very good video", DateTime.Now, c1, a1);
+            a1.AddComment(cm1); 
+            dal.Insert<Comment>(cm1);
             dal.Commit();
+            Console.WriteLine("\n// CREATING A COMMENT");
 
             // Creating a professor 
-            Member professor = new Member("fjaen@dsic.upv.es", "Javier Jaen", DateTime.Now, "fjaen", "password");
-            dal.Insert<Member>(professor);
+            Member p1 = new Member("fjaen@dsic.upv.es", "Javier Jaen", DateTime.Now, "fjaen", "password");
+            dal.Insert<Member>(p1);
             dal.Commit();
+            Console.WriteLine("\n// CREATING A PROFESSOR");
 
             //Adding an evaluation
-            Evaluation eval = new Evaluation(DateTime.Now, "Accepted", professor, c1);
-            professor.AddEvaluation(eval);
-            c1.Evaluation = eval;
-            c1.Authorized = Authorized.Yes; 
-            dal.Insert<Evaluation>(eval);
+            Evaluation e1 = new Evaluation(DateTime.Now, "Accepted", p1, c1);
+            p1.AddEvaluation(e1);
+            c1.Evaluation = e1; //Add a evaluation to the content manually because cardinality is 0..1 
+            c1.Authorized = Authorized.Yes; //authorizing the content c1 
+            dal.Insert<Evaluation>(e1);
             dal.Commit();
+            Console.WriteLine("\n// CREATING A EVALUATION");
+
+            //Adding a Visualization element, with Professor as the viwer  
+            Visualization v1 = new Visualization(DateTime.Now, c1, p1);
+            p1.AddVisualization(v1);
+            c1.AddVisualization(v1);
+            dal.Insert<Visualization>(v1);
+            dal.Commit();
+            Console.WriteLine("\n// CREATING A VISUALIZATION");
 
 
-
-          
-
-
-
+            //Adding a subject
+            Subject s1 = new Subject(1111, "Software Engineering", "Isw");
+            c1.AddSubject(s1);
+            dal.Insert<Subject>(s1);
+            dal.Commit();
+            Console.WriteLine("\n// CREATING A SUBJECT");
+            Console.ReadKey();
         }
-
     }
 }

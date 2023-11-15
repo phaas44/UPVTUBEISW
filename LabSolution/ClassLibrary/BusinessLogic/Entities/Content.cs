@@ -28,7 +28,14 @@ namespace UPVTube.Entities
                 this.Authorized = Authorized.Yes;
             } else {
                 this.Authorized = Authorized.Pending;
-            }
+            } 
+        }
+
+        public void AddVisualization(Visualization v) {
+            this.Visualizations.Add(v);
+        }
+        public void AddSubject(Subject s){
+            this.Subjects.Add(s);
         }
     }
 }
