@@ -83,6 +83,11 @@ namespace UPVTube.Services
             }
         }
 
+        public List<Content> SearchContentByDate(DateTime Start, DateTime End)
+        {
+            return dal.GetWhere<Content>(c => c.UploadDate < End && c.UploadDate > Start).ToList();
+        }
+
 
     }
 }

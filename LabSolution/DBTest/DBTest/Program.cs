@@ -63,7 +63,16 @@ namespace DBTest
         {
             IDAL dal = new EntityFrameworkDAL(new UPVTubeDbContext());
 
-            //UPVTubeService service = new UPVTubeService(dal);
+            CreateSampleDB(dal);
+
+            UPVTubeService service = new UPVTubeService(dal);
+
+            DateTime start = new DateTime(2019, 05, 09, 9, 15, 0);// this will initialize variable with a specific date(09/05/2019) and time(9:15:00).
+
+            List<Content> res = service.SearchContentByDate(start, DateTime.Now);
+        
+            // Check if correct content obtained.
+            Console.WriteLine(res[0].Title);
 
             //// This works and adds a new user to the database.
             ////service.registerNewUser("bla", "Jesus", DateTime.Now, "hellow", "passwd");
@@ -76,8 +85,6 @@ namespace DBTest
             //Member a = service.User;
             ////isLoggedIn?
             //service.isLoggedIn(a);
-
-            CreateSampleDB(dal);
 
         }
 
@@ -146,7 +153,7 @@ namespace DBTest
             dal.Insert<Subject>(s1);
             dal.Commit();
             Console.WriteLine("\n// CREATING A SUBJECT");
-            Console.ReadKey();
+            //Console.ReadKey();
         }
     }
 }
