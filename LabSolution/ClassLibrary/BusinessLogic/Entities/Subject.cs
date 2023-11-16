@@ -19,7 +19,7 @@ namespace UPVTube.Entities
             this.FullName = fn;
             this.Name = n;
         }
-
+        
         public void AddContent(Content c)
         {
             this.Contents.Add(c);

@@ -52,7 +52,7 @@ namespace UPVTube.Services
             }
 
             //User is registered: ask for credentials
-
+            
             if (dal.GetById<Member>(nick).Password != password)
             {
                 throw new ServiceException("Provided nick or password is wrong!");
@@ -89,5 +89,5 @@ namespace UPVTube.Services
         }
 
 
-    }
+    } 
 }
