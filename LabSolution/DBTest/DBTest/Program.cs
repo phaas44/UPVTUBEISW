@@ -65,14 +65,23 @@ namespace DBTest
 
             CreateSampleDB(dal);
 
+            int runTest = 0;
             UPVTubeService service = new UPVTubeService(dal);
 
-            DateTime start = new DateTime(2019, 05, 09, 9, 15, 0);// this will initialize variable with a specific date(09/05/2019) and time(9:15:00).
+            if (runTest == 1)
+            {
+                DateTime start = new DateTime(2019, 05, 09, 9, 15, 0);// this will initialize variable with a specific date(09/05/2019) and time(9:15:00).
 
-            List<Content> res = service.SearchContentByDate(start, DateTime.Now);
-        
-            // Check if correct content obtained.
-            Console.WriteLine(res[0].Title);
+                List<Content> res = service.SearchContentByDate(start, DateTime.Now);
+
+                // Check if correct content obtained.
+                Console.WriteLine(res[0].Title);
+
+            }
+
+            
+
+
 
             //// This works and adds a new user to the database.
             ////service.registerNewUser("bla", "Jesus", DateTime.Now, "hellow", "passwd");
