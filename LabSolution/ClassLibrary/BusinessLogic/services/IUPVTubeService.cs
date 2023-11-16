@@ -17,6 +17,8 @@ namespace UPVTube.Services
 
         bool isLoggedIn(Member user);
 
+        List<Content> SearchContentByDate(DateTime Start, DateTime End);
+
 
     }
 }
