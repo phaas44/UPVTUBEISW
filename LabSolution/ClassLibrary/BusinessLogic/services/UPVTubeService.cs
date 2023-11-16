@@ -12,7 +12,7 @@ namespace UPVTube.Services
     {
 
         private readonly IDAL dal;
-        public Member User { get; set; }
+        public virtual Member Logged { get; set; }
 
         public UPVTubeService(IDAL dal) {
             this.dal = dal;
@@ -64,21 +64,21 @@ namespace UPVTube.Services
             //Load Member object from database
 
             Member user = dal.GetById<Member>(nick);
-            this.User = user;
+            this.Logged = user;
 
         }
 
         public bool isLoggedIn(Member user)
         {
             // Check if there is a possible user that is logged in.
-            if (this.User == null)
+            if (this.Logged == null)
             {
                 return false;
             }
             else
             {
                 //throw new ServiceException("User is indeed logged in.");
-                return this.User.Nick == user.Nick;
+                return this.Logged.Nick == user.Nick;
 
             }
         }
