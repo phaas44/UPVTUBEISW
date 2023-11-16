@@ -12,7 +12,7 @@ namespace UPVTube.Services
     {
 
         private readonly IDAL dal;
-        public virtual Member Logged { get; set; }
+        private Member Logged { get; set; }
 
         public UPVTubeService(IDAL dal) {
             this.dal = dal;
