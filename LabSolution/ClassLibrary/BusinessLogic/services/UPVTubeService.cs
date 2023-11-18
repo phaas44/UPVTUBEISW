@@ -68,6 +68,26 @@ namespace UPVTube.Services
 
         }
 
+        public void logoutCurrentUser(Member logged)
+        {
+            if (this.Logged == logged)
+            {
+                logged.LastAccessDate = DateTime.Now;
+                dal.Commit();
+
+                this.Logged = null;
+            }
+            else throw new ServiceException("The user provided is not logged in!");
+        }
+
+        public void uploadNewContent(string uri, string desc, string title, DateTime uploadDate, Member logged)
+        {
+            if (this.Logged == logged)
+            {
+
+            }
+        }
+
         public bool isLoggedIn(Member user)
         {
             // Check if there is a possible user that is logged in.
