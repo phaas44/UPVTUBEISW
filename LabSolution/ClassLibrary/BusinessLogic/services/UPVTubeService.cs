@@ -68,24 +68,67 @@ namespace UPVTube.Services
 
         }
 
-        public void logoutCurrentUser(Member logged)
+        public void logoutUser(Member user)
         {
-            if (this.Logged == logged)
+            if (this.Logged == user)
             {
-                logged.LastAccessDate = DateTime.Now;
+                user.LastAccessDate = DateTime.Now;
                 dal.Commit();
 
                 this.Logged = null;
+            } 
+            else throw new ServiceException("The user provided is not logged in!");
+        }
+
+        public void uploadNewContent(Member user)
+        {
+            if (this.Logged == user)
+            {
+                Console.Write("Please provide the following data to upload your content:\n\n");
+
+                Console.Write("Title:\n");
+                string title = Console.ReadLine();
+
+                Console.Write("Description:\n");
+                string desc = Console.ReadLine();
+
+                Console.Write("Content URI:\n");
+                string uri = Console.ReadLine();
+
+                Console.Write("Privacy status (public / private):\n");
+                string privacy = Console.ReadLine();
+                bool isPublic;
+
+                while (privacy.ToLower() != "public" || privacy.ToLower() != "private")
+                {
+                    Console.WriteLine("Error! Please provide a permitted privacy status (public / private):\n");
+                    privacy = Console.ReadLine();
+                }
+
+                if (privacy.ToLower() == "public")
+                    isPublic = true;
+
+                else if (privacy.ToLower() == "private")
+                    isPublic = false;
+
+                Console.WriteLine("Related subjects of the content (comma-separated, leave blank if none):\n");
+                string[] relatedSubjects = Console.ReadLine().Split(',');
+                List<string> listSubjects = new List<string>(relatedSubjects); 
+
+                Console.WriteLine("Done! Verifying info...");
+
             }
             else throw new ServiceException("The user provided is not logged in!");
         }
 
-        public void uploadNewContent(string uri, string desc, string title, DateTime uploadDate, Member logged)
+        private static bool VerifyData(string title, string description, string uri, List<string> subjects)
         {
-            if (this.Logged == logged)
+            if (string.IsNullOrWhiteSpace(title) || string.IsNullOrWhiteSpace(description)
+                || string.IsNullOrWhiteSpace(uri) || subjects.Count == 0)
             {
-
+                return false;
             }
+            else return true;
         }
 
         public bool isLoggedIn(Member user)
