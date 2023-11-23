@@ -68,67 +68,44 @@ namespace UPVTube.Services
 
         }
 
-        public void logoutUser(Member user)
+        public void logoutUser()
         {
-            if (this.Logged == user)
+            if (this.Logged != null)
             {
-                user.LastAccessDate = DateTime.Now;
+                Member m = dal.GetById<Member>(this.Logged.Nick);
+                m.LastAccessDate = DateTime.Now;
                 dal.Commit();
 
                 this.Logged = null;
             } 
-            else throw new ServiceException("The user provided is not logged in!");
+            else throw new ServiceException("User is not logged in!");
         }
 
-        public void uploadNewContent(Member user)
+        public void uploadNewContent(string title, string desc, string uri, bool privacy, List<Subject> related)
         {
-            if (this.Logged == user)
+            if (Domains.IsUPVMemberDomain(this.Logged.Email))
             {
-                Console.Write("Please provide the following data to upload your content:\n\n");
-
-                Console.Write("Title:\n");
-                string title = Console.ReadLine();
-
-                Console.Write("Description:\n");
-                string desc = Console.ReadLine();
-
-                Console.Write("Content URI:\n");
-                string uri = Console.ReadLine();
-
-                Console.Write("Privacy status (public / private):\n");
-                string privacy = Console.ReadLine();
-                bool isPublic;
-
-                while (privacy.ToLower() != "public" || privacy.ToLower() != "private")
+                if (VerifyContentData(title, desc, uri))
                 {
-                    Console.WriteLine("Error! Please provide a permitted privacy status (public / private):\n");
-                    privacy = Console.ReadLine();
+                    Content c = new Content(uri, desc, privacy, title, DateTime.Now, this.Logged);
+
+                    foreach (Subject s in related)
+                    {
+                        c.AddSubject(s);
+                    }
+                    this.Logged.AddContent(c);
+                    dal.Insert<Content>(c);
+                    dal.Commit();
                 }
-
-                if (privacy.ToLower() == "public")
-                    isPublic = true;
-
-                else if (privacy.ToLower() == "private")
-                    isPublic = false;
-
-                Console.WriteLine("Related subjects of the content (comma-separated, leave blank if none):\n");
-                string[] relatedSubjects = Console.ReadLine().Split(',');
-                List<string> listSubjects = new List<string>(relatedSubjects); 
-
-                Console.WriteLine("Done! Verifying info...");
-
+                else throw new ServiceException("Please fill all the required data.");
             }
-            else throw new ServiceException("The user provided is not logged in!");
+            else throw new ServiceException("You must be a UPV member to upload content!");
         }
 
-        private static bool VerifyData(string title, string description, string uri, List<string> subjects)
+        private static bool VerifyContentData(string title, string desc, string uri)
         {
-            if (string.IsNullOrWhiteSpace(title) || string.IsNullOrWhiteSpace(description)
-                || string.IsNullOrWhiteSpace(uri) || subjects.Count == 0)
-            {
-                return false;
-            }
-            else return true;
+            return !string.IsNullOrWhiteSpace(title) && !string.IsNullOrWhiteSpace(desc)
+                && !string.IsNullOrWhiteSpace(uri);
         }
 
         public bool isLoggedIn(Member user)
