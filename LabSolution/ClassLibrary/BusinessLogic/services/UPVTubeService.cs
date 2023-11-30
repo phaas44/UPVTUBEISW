@@ -142,7 +142,7 @@ namespace UPVTube.Services
 
         }
 
-        public void logoutUser()
+        public void LogoutUser()
         {
             if (this.Logged != null)
             {
@@ -155,7 +155,7 @@ namespace UPVTube.Services
             else throw new ServiceException("User is not logged in!");
         }
 
-        public void uploadNewContent(Content c, List<int> related)
+        public void UploadNewContent(Content c, List<int> related)
         {
             if (Domains.IsUPVMemberDomain(this.Logged.Email))
             {
@@ -183,7 +183,7 @@ namespace UPVTube.Services
                 && !string.IsNullOrWhiteSpace(uri);
         }
 
-        public bool isLoggedIn(Member user)
+        public bool IsLoggedIn(Member user)
         {
             // Check if there is a possible user that is logged in.
             if (this.Logged == null)
