@@ -183,24 +183,9 @@ namespace UPVTube.Services
                 && !string.IsNullOrWhiteSpace(uri);
         }
 
-        public bool IsLoggedIn(Member user)
-        {
-            // Check if there is a possible user that is logged in.
-            if (this.Logged == null)
-            {
-                return false;
-            }
-            else
-            {
-                //throw new ServiceException("User is indeed logged in.");
-                return this.Logged.Nick == user.Nick;
-
-            }
-        }
-
         public List<Content> SearchContent(DateTime Start, DateTime End, string nick, string title, string subject)
         {
-            if (Logged == null)
+            if (this.Logged == null)
             {
                 throw new ServiceException("User is not logged.");
             }
