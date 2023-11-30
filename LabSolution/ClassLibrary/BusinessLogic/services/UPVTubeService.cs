@@ -142,6 +142,47 @@ namespace UPVTube.Services
 
         }
 
+        public void LogoutUser()
+        {
+            if (this.Logged != null)
+            {
+                Member m = dal.GetById<Member>(this.Logged.Nick);
+                m.LastAccessDate = DateTime.Now;
+                dal.Commit();
+
+                this.Logged = null;
+            } 
+            else throw new ServiceException("User is not logged in!");
+        }
+
+        public void UploadNewContent(Content c, List<int> related)
+        {
+            if (Domains.IsUPVMemberDomain(this.Logged.Email))
+            {
+                if (!dal.GetWhere<Content>(z => z.ContentURI == c.ContentURI).Any())
+                {
+                    foreach (int n in related)
+                    {
+                        Subject subject = dal.GetById<Subject>(n);
+                        c.AddSubject(subject);
+                        subject.AddContent(c);
+                    }
+
+                    this.Logged.AddContent(c);
+                    dal.Insert<Content>(c);
+                    dal.Commit();
+                }
+                else throw new ServiceException("That Content URI already exists!");
+            }
+            else throw new ServiceException("You must be a UPV member to upload content!");
+        }
+
+        private static bool VerifyContentData(string title, string desc, string uri)
+        {
+            return !string.IsNullOrWhiteSpace(title) && !string.IsNullOrWhiteSpace(desc)
+                && !string.IsNullOrWhiteSpace(uri);
+        }
+
         public bool IsLoggedIn(Member user)
         {
             // Check if there is a possible user that is logged in.

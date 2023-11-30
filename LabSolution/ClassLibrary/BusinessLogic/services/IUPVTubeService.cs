@@ -19,6 +19,10 @@ namespace UPVTube.Services
 
         void LoginUser(string nick, string password);
 
+        void LogoutUser();
+
+        void UploadNewContent(Content c, List<int> related);
+
         bool IsLoggedIn(Member user);
 
         List<Content> SearchContent(DateTime Start, DateTime End, string nick, string title, string subject);
