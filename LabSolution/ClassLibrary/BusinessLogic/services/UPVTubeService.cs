@@ -126,7 +126,7 @@ namespace UPVTube.Services
             }
 
             //User is registered: ask for credentials
-
+            
             if (dal.GetById<Member>(nick).Password != password)
             {
                 throw new ServiceException("Provided nick or password is wrong!");
@@ -157,11 +157,71 @@ namespace UPVTube.Services
             }
         }
 
-        public List<Content> SearchContentByDate(DateTime Start, DateTime End)
+        public List<Content> SearchContent(DateTime Start, DateTime End, string nick, string title, string subject)
         {
-            return dal.GetWhere<Content>(c => c.UploadDate < End && c.UploadDate > Start).ToList();
+            if (Logged == null)
+            {
+                throw new ServiceException("User is not logged.");
+            }
+
+            List<Content> c = dal.GetWhere<Content>(cn => cn.Authorized == Authorized.Yes).ToList();
+            if (Start != null && End != null)
+            {
+                c = c.Where(cn => cn.UploadDate < End && cn.UploadDate > Start).ToList();
+
+            }
+            if (nick != "")
+            {
+                c = c.Where(cn => cn.Owner.Nick == nick).ToList();
+            }
+            if (title != "")
+            {
+                c = c.Where(cn => cn.Title == title).ToList();
+            }
+            if (subject != "")
+            {
+                c = c.Where(cn => cn.Subjects.Any(s => s.Name.Contains(subject))).ToList();
+            }
+            if (!Domains.IsUPVMemberDomain(this.Logged.Email))
+            {
+                c.Where(cn => cn.IsPublic).ToList();
+                return c;
+            }
+            else
+            {
+                return c;
+            }
+
+        }
+
+        public List<Content> GetAllPendingContents()
+        {
+            List<Content> list = null;
+            if (Domains.IsTeacherDomain(this.Logged.Email))
+            {
+                list = dal.GetWhere<Content>(c => c.Authorized == Authorized.Pending).ToList();
+
+            }
+            return list;
+        }
+        public void AddEvaluation(int contentId, string RejectionReason, bool rejected)
+        {
+            if (rejected)
+            {
+
+            }
+            Content content = dal.GetById<Content>(contentId);
+            Evaluation eval = new Evaluation(DateTime.Now, RejectionReason, content.Owner, content);
+            content.Evaluation = eval;
         }
 
 
+
+
     }
-}
+
+
+
+
+} 
+

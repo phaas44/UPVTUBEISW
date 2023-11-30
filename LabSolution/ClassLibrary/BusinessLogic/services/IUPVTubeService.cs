@@ -21,8 +21,8 @@ namespace UPVTube.Services
 
         bool IsLoggedIn(Member user);
 
-        List<Content> SearchContentByDate(DateTime Start, DateTime End);
-
-
+        List<Content> SearchContent(DateTime Start, DateTime End, string nick, string title, string subject);
+        List<Content> GetAllPendingContents();
+        void AddEvaluation(int contentId, string RejectionReason, bool rejected);
     }
 }
