@@ -17,7 +17,7 @@ namespace UPVTube.Services
 
         void logoutUser();
 
-        void uploadNewContent(string title, string desc, string uri, bool privacy, List<Subject> related);
+        void uploadNewContent(Content c, List<int> related);
 
         bool isLoggedIn(Member user);
 

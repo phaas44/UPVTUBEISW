@@ -81,23 +81,24 @@ namespace UPVTube.Services
             else throw new ServiceException("User is not logged in!");
         }
 
-        public void uploadNewContent(string title, string desc, string uri, bool privacy, List<Subject> related)
+        public void uploadNewContent(Content c, List<int> related)
         {
             if (Domains.IsUPVMemberDomain(this.Logged.Email))
             {
-                if (VerifyContentData(title, desc, uri))
+                if (!dal.GetWhere<Content>(z => z.ContentURI == c.ContentURI).Any())
                 {
-                    Content c = new Content(uri, desc, privacy, title, DateTime.Now, this.Logged);
-
-                    foreach (Subject s in related)
+                    foreach (int n in related)
                     {
-                        c.AddSubject(s);
+                        Subject subject = dal.GetById<Subject>(n);
+                        c.AddSubject(subject);
+                        subject.AddContent(c);
                     }
+
                     this.Logged.AddContent(c);
                     dal.Insert<Content>(c);
                     dal.Commit();
                 }
-                else throw new ServiceException("Please fill all the required data.");
+                else throw new ServiceException("That Content URI already exists!");
             }
             else throw new ServiceException("You must be a UPV member to upload content!");
         }
