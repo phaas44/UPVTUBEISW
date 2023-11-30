@@ -63,7 +63,9 @@ namespace DBTest
         {
             IDAL dal = new EntityFrameworkDAL(new UPVTubeDbContext());
 
-            CreateSampleDB(dal);
+            TestCaseIntegration(dal);
+
+            //CreateSampleDB(dal);
 
             int runTest = 0;
             UPVTubeService service = new UPVTubeService(dal);
@@ -163,6 +165,16 @@ namespace DBTest
             dal.Commit();
             Console.WriteLine("\n// CREATING A SUBJECT");
             //Console.ReadKey();
+        }
+
+        private void TestCaseIntegration(IDAL dal)
+        {
+            UPVTubeService service = new UPVTubeService(dal);
+            service.DBInitialization();
+            service.Commit();
+
+            Console.WriteLine("DB initialized");
+            
         }
     }
 }

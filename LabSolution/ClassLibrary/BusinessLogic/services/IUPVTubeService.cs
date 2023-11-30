@@ -9,13 +9,17 @@ namespace UPVTube.Services
 {
     public interface IUPVTubeService
     {
-        void registerNewUser(string email, string name, DateTime date, string nick, string password);
+        void DBInitialization();
+        void AddSubject(Subject s);
+        void RegisterNewUser(string email, string name, DateTime date, string nick, string password);
 
-        void removeAllData();
+        void RemoveAllData();
 
-        void loginUser(string nick, string password);
+        void Commit();
 
-        bool isLoggedIn(Member user);
+        void LoginUser(string nick, string password);
+
+        bool IsLoggedIn(Member user);
 
         List<Content> SearchContent(DateTime Start, DateTime End, string nick, string title, string subject)
         List<Content> GetAllPendingContents();
