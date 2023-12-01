@@ -51,15 +51,16 @@ namespace UPVTubeGUI
                 try
                 {
                     service.LoginUser(nickname, password);
+                    MessageBox.Show("Login Successful!");
 
                 }
 
-                catch (Exception e) {
+                catch (Exception ex) {
 
-                    MessageBox.Show(e.Message);
+                    MessageBox.Show(ex.Message);
                 }
                     
-                MessageBox.Show("Login Successful!");
+                
 
             }
 
