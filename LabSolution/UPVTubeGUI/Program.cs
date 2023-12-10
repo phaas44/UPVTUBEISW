@@ -20,7 +20,7 @@ namespace UPVTubeGUI
             service.DBInitialization();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new UPVTubeApp(service));
+            Application.Run(new UPVTubeLoginForm(service));
         }
     }
 }

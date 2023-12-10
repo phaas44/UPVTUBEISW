@@ -1,6 +1,6 @@
 ﻿namespace UPVTubeGUI
 {
-    partial class UPVTubeApp
+    partial class UPVTubeLoginForm
     {
         /// <summary>
         /// Required designer variable.

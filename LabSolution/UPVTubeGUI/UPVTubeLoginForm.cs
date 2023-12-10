@@ -11,17 +11,15 @@ using UPVTube.Services;
 
 namespace UPVTubeGUI
 {
-    public partial class UPVTubeApp : Form
+    public partial class UPVTubeLoginForm : Form
     {
         private IUPVTubeService service;
 
-        private RegisterNewUserForm registerNewUserForm;
-        private UPVTubeLoggedInForm loggedInForm;
+        private UPVTubeAppForm loggedInForm;
         
-        public UPVTubeApp(IUPVTubeService service)
+        public UPVTubeLoginForm(IUPVTubeService service)
         {
             InitializeComponent();
-            registerNewUserForm = new RegisterNewUserForm(service);
               
             this.service = service;
         }
@@ -60,7 +58,7 @@ namespace UPVTubeGUI
                     MessageBox.Show("Login Successful!");
 
                     //Create next displayed form.
-                    loggedInForm = new UPVTubeLoggedInForm(service);
+                    loggedInForm = new UPVTubeAppForm(service);
                     loggedInForm.ShowDialog();
 
                 }
@@ -82,7 +80,6 @@ namespace UPVTubeGUI
 
         private void RegisterButton_Click(object sender, EventArgs e)
         {
-            registerNewUserForm.ShowDialog();
 
      
 

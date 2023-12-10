@@ -12,12 +12,12 @@ using UPVTube.Services;
 
 namespace UPVTubeGUI
 {
-    public partial class UPVTubeLoggedInForm : Form
+    public partial class UPVTubeAppForm : Form
     {
         private IUPVTubeService service;
 
         private UPVTubeUploadContentForm uploadContentForm;
-        public UPVTubeLoggedInForm(IUPVTubeService service)
+        public UPVTubeAppForm(IUPVTubeService service)
         {
             InitializeComponent();
             this.service = service;

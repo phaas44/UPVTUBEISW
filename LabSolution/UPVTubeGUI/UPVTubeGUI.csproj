@@ -62,25 +62,19 @@
     <Compile Include="NewSubjectForm.Designer.cs">
       <DependentUpon>NewSubjectForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="RegisterNewUserForm.cs">
+    <Compile Include="UPVTubeLoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RegisterNewUserForm.Designer.cs">
-      <DependentUpon>RegisterNewUserForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UPVTubeApp.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UPVTubeApp.Designer.cs">
-      <DependentUpon>UPVTubeApp.cs</DependentUpon>
+    <Compile Include="UPVTubeLoginForm.Designer.cs">
+      <DependentUpon>UPVTubeLoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UPVTubeLoggedInForm.cs">
+    <Compile Include="UPVTubeAppForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UPVTubeLoggedInForm.Designer.cs">
-      <DependentUpon>UPVTubeLoggedInForm.cs</DependentUpon>
+    <Compile Include="UPVTubeAppForm.Designer.cs">
+      <DependentUpon>UPVTubeAppForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UPVTubeUploadContentForm.cs">
       <SubType>Form</SubType>
@@ -100,14 +94,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="RegisterNewUserForm.resx">
-      <DependentUpon>RegisterNewUserForm.cs</DependentUpon>
+    <EmbeddedResource Include="UPVTubeLoginForm.resx">
+      <DependentUpon>UPVTubeLoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UPVTubeApp.resx">
-      <DependentUpon>UPVTubeApp.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UPVTubeLoggedInForm.resx">
-      <DependentUpon>UPVTubeLoggedInForm.cs</DependentUpon>
+    <EmbeddedResource Include="UPVTubeAppForm.resx">
+      <DependentUpon>UPVTubeAppForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UPVTubeUploadContentForm.resx">
       <DependentUpon>UPVTubeUploadContentForm.cs</DependentUpon>
