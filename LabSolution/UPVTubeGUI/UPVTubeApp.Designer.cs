@@ -35,12 +35,6 @@
             this.PasswordText = new System.Windows.Forms.Label();
             this.NicknameInput = new System.Windows.Forms.TextBox();
             this.PasswordInput = new System.Windows.Forms.TextBox();
-            this.MenuStrip = new System.Windows.Forms.MenuStrip();
-            this.SystemStrip = new System.Windows.Forms.ToolStripMenuItem();
-            this.CreateSampleDBStrip = new System.Windows.Forms.ToolStripMenuItem();
-            this.DeleteDBStrip = new System.Windows.Forms.ToolStripMenuItem();
-            this.ExitStrip = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // LoginButton
@@ -66,7 +60,7 @@
             // LoginLabel
             // 
             this.LoginLabel.AutoSize = true;
-            this.LoginLabel.Location = new System.Drawing.Point(320, 49);
+            this.LoginLabel.Location = new System.Drawing.Point(310, 34);
             this.LoginLabel.Name = "LoginLabel";
             this.LoginLabel.Size = new System.Drawing.Size(121, 20);
             this.LoginLabel.TabIndex = 2;
@@ -105,49 +99,6 @@
             this.PasswordInput.Size = new System.Drawing.Size(486, 26);
             this.PasswordInput.TabIndex = 6;
             // 
-            // MenuStrip
-            // 
-            this.MenuStrip.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
-            this.MenuStrip.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.MenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.SystemStrip});
-            this.MenuStrip.Location = new System.Drawing.Point(0, 0);
-            this.MenuStrip.Name = "MenuStrip";
-            this.MenuStrip.Size = new System.Drawing.Size(800, 33);
-            this.MenuStrip.TabIndex = 7;
-            this.MenuStrip.Text = "menuStrip1";
-            // 
-            // SystemStrip
-            // 
-            this.SystemStrip.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.CreateSampleDBStrip,
-            this.DeleteDBStrip,
-            this.ExitStrip});
-            this.SystemStrip.Name = "SystemStrip";
-            this.SystemStrip.Size = new System.Drawing.Size(85, 29);
-            this.SystemStrip.Text = "System";
-            // 
-            // CreateSampleDBStrip
-            // 
-            this.CreateSampleDBStrip.Name = "CreateSampleDBStrip";
-            this.CreateSampleDBStrip.Size = new System.Drawing.Size(296, 34);
-            this.CreateSampleDBStrip.Text = "Create New Sample DB";
-            this.CreateSampleDBStrip.Click += new System.EventHandler(this.CreateSampleDBStrip_Click);
-            // 
-            // DeleteDBStrip
-            // 
-            this.DeleteDBStrip.Name = "DeleteDBStrip";
-            this.DeleteDBStrip.Size = new System.Drawing.Size(296, 34);
-            this.DeleteDBStrip.Text = "Delete DB";
-            this.DeleteDBStrip.Click += new System.EventHandler(this.DeleteDBStrip_Click);
-            // 
-            // ExitStrip
-            // 
-            this.ExitStrip.Name = "ExitStrip";
-            this.ExitStrip.Size = new System.Drawing.Size(296, 34);
-            this.ExitStrip.Text = "Exit";
-            this.ExitStrip.Click += new System.EventHandler(this.ExitStrip_Click);
-            // 
             // UPVTubeApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -160,13 +111,9 @@
             this.Controls.Add(this.LoginLabel);
             this.Controls.Add(this.RegisterButton);
             this.Controls.Add(this.LoginButton);
-            this.Controls.Add(this.MenuStrip);
-            this.MainMenuStrip = this.MenuStrip;
             this.Name = "UPVTubeApp";
             this.Text = "UPVTubeApp";
             this.Load += new System.EventHandler(this.UPVTubeApp_Load);
-            this.MenuStrip.ResumeLayout(false);
-            this.MenuStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -181,11 +128,6 @@
         private System.Windows.Forms.Label PasswordText;
         private System.Windows.Forms.TextBox NicknameInput;
         private System.Windows.Forms.TextBox PasswordInput;
-        private System.Windows.Forms.MenuStrip MenuStrip;
-        private System.Windows.Forms.ToolStripMenuItem SystemStrip;
-        private System.Windows.Forms.ToolStripMenuItem CreateSampleDBStrip;
-        private System.Windows.Forms.ToolStripMenuItem ExitStrip;
-        private System.Windows.Forms.ToolStripMenuItem DeleteDBStrip;
     }
 }
 
