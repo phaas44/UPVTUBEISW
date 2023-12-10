@@ -157,6 +157,10 @@ namespace UPVTube.Services
 
         public void UploadNewContent(Content c, List<int> related)
         {
+            if (this.Logged == null) throw new ServiceException("User is not logged in!");
+
+            if (related.Count > 3) throw new ServiceException("Only up to 3 different subjects can be added!");
+
             if (Domains.IsUPVMemberDomain(this.Logged.Email))
             {
                 if (!dal.GetWhere<Content>(z => z.ContentURI == c.ContentURI).Any())
@@ -173,11 +177,14 @@ namespace UPVTube.Services
                     dal.Commit();
                 }
                 else throw new ServiceException("That Content URI already exists!");
+
             }
             else throw new ServiceException("You must be a UPV member to upload content!");
         }
+            
 
-        private static bool VerifyContentData(string title, string desc, string uri)
+
+            private static bool VerifyContentData(string title, string desc, string uri)
         {
             return !string.IsNullOrWhiteSpace(title) && !string.IsNullOrWhiteSpace(desc)
                 && !string.IsNullOrWhiteSpace(uri);
