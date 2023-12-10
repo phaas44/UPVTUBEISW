@@ -14,9 +14,15 @@ namespace UPVTubeGUI
     public partial class UPVTubeApp : Form
     {
         private IUPVTubeService service;
+
+        private RegisterNewUserForm registerNewUserForm;
+        private UPVTubeLoggedInForm loggedInForm;
+        
         public UPVTubeApp(IUPVTubeService service)
         {
             InitializeComponent();
+            registerNewUserForm = new RegisterNewUserForm(service);
+              
             this.service = service;
         }
 
@@ -53,14 +59,16 @@ namespace UPVTubeGUI
                     service.LoginUser(nickname, password);
                     MessageBox.Show("Login Successful!");
 
+                    //Create next displayed form.
+                    loggedInForm = new UPVTubeLoggedInForm(service);
+                    loggedInForm.Show();
+
                 }
 
                 catch (Exception ex) {
 
                     MessageBox.Show(ex.Message);
                 }
-                    
-                
 
             }
 
@@ -74,10 +82,30 @@ namespace UPVTubeGUI
 
         private void RegisterButton_Click(object sender, EventArgs e)
         {
-            // Open a new window to get to the registration form.
+            registerNewUserForm.ShowDialog();
 
      
 
+        }
+
+        private void CreateSampleDBStrip_Click(object sender, EventArgs e)
+        {
+            service.DBInitialization();
+            service.Commit();
+
+            MessageBox.Show("Sample Database has been created!");
+        }
+
+        private void DeleteDBStrip_Click(object sender, EventArgs e)
+        {
+
+            service.RemoveAllData();
+            MessageBox.Show("All data has been removed.");
+        }
+
+        private void ExitStrip_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
