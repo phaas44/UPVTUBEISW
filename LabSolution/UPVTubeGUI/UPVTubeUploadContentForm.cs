@@ -94,7 +94,7 @@ namespace UPVTubeGUI
                 
             }
 
-            else { MessageBox.Show("Provide atleast Title, URI and description."); }
+            else { MessageBox.Show("Provide at least title, URI and description."); }
 
             
         }
