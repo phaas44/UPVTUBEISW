@@ -115,7 +115,7 @@
             this.RestrictedCheckbox.Name = "RestrictedCheckbox";
             this.RestrictedCheckbox.Size = new System.Drawing.Size(125, 24);
             this.RestrictedCheckbox.TabIndex = 8;
-            this.RestrictedCheckbox.Text = "Is Restrcited";
+            this.RestrictedCheckbox.Text = "Is Restricted";
             this.RestrictedCheckbox.UseVisualStyleBackColor = true;
             // 
             // AddButton
