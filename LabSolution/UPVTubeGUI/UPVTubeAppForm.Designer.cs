@@ -30,11 +30,11 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.contentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.searchContentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.uploadContentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reviewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.systemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.LogoutStrip = new System.Windows.Forms.ToolStripMenuItem();
-            this.searchContentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.uploadContentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,6 +61,19 @@
             this.contentToolStripMenuItem.Size = new System.Drawing.Size(91, 29);
             this.contentToolStripMenuItem.Text = "Content";
             // 
+            // searchContentToolStripMenuItem
+            // 
+            this.searchContentToolStripMenuItem.Name = "searchContentToolStripMenuItem";
+            this.searchContentToolStripMenuItem.Size = new System.Drawing.Size(240, 34);
+            this.searchContentToolStripMenuItem.Text = "Search Content";
+            // 
+            // uploadContentToolStripMenuItem
+            // 
+            this.uploadContentToolStripMenuItem.Name = "uploadContentToolStripMenuItem";
+            this.uploadContentToolStripMenuItem.Size = new System.Drawing.Size(240, 34);
+            this.uploadContentToolStripMenuItem.Text = "Upload Content";
+            this.uploadContentToolStripMenuItem.Click += new System.EventHandler(this.UploadContentStrip_Click);
+            // 
             // reviewToolStripMenuItem
             // 
             this.reviewToolStripMenuItem.Name = "reviewToolStripMenuItem";
@@ -78,32 +91,20 @@
             // LogoutStrip
             // 
             this.LogoutStrip.Name = "LogoutStrip";
-            this.LogoutStrip.Size = new System.Drawing.Size(270, 34);
+            this.LogoutStrip.Size = new System.Drawing.Size(171, 34);
             this.LogoutStrip.Text = "Logout";
             this.LogoutStrip.Click += new System.EventHandler(this.LogoutStrip_Click);
             // 
-            // searchContentToolStripMenuItem
-            // 
-            this.searchContentToolStripMenuItem.Name = "searchContentToolStripMenuItem";
-            this.searchContentToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
-            this.searchContentToolStripMenuItem.Text = "Search Content";
-            // 
-            // uploadContentToolStripMenuItem
-            // 
-            this.uploadContentToolStripMenuItem.Name = "uploadContentToolStripMenuItem";
-            this.uploadContentToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
-            this.uploadContentToolStripMenuItem.Text = "Upload Content";
-            this.uploadContentToolStripMenuItem.Click += new System.EventHandler(this.UploadContentStrip_Click);
-            // 
-            // UPVTubeLoggedInForm
+            // UPVTubeAppForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "UPVTubeLoggedInForm";
+            this.Name = "UPVTubeAppForm";
             this.Text = "UPVTubeLoggedInForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.UPVTubeAppForm_FormClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

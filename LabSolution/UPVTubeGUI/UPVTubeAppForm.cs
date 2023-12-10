@@ -36,5 +36,11 @@ namespace UPVTubeGUI
             uploadContentForm = new UPVTubeUploadContentForm(service);
             uploadContentForm.ShowDialog();
         }
+
+        private void UPVTubeAppForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            service.LogoutUser();
+            MessageBox.Show("Logged out.");
+        }
     }
 }
