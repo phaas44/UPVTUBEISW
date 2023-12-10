@@ -17,6 +17,7 @@ namespace UPVTubeGUI
         private IUPVTubeService service;
 
         private UPVTubeUploadContentForm uploadContentForm;
+        private PendingReviewContentForm pendingReviewContentForm;
         public UPVTubeAppForm(IUPVTubeService service)
         {
             InitializeComponent();
@@ -41,6 +42,12 @@ namespace UPVTubeGUI
         {
             service.LogoutUser();
             MessageBox.Show("Logged out.");
+        }
+
+        private void ViewPendingContentStrip_Click(object sender, EventArgs e)
+        {
+            pendingReviewContentForm = new PendingReviewContentForm(service);
+            pendingReviewContentForm.ShowDialog();
         }
     }
 }
