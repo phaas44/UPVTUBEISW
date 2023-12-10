@@ -11,16 +11,24 @@ using UPVTube.Entities;
 using UPVTube.Services;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
-namespace UPVTubeGUI
+namespace UPVTubeApp
 {
-    public partial class UPVTubeUploadContentForm : Form
+    public partial class UPVTubeFormBase : Form
     {
+<<<<<<< Updated upstream:LabSolution/UPVTubeApp/Forms/UPVTubeFormBase.cs
+        protected IUPVTubeService service;
+        public UPVTubeFormBase()
+=======
         private IUPVTubeService service;
         private NewSubjectForm newSubjectForm;
 
         public UPVTubeUploadContentForm(IUPVTubeService service)
+>>>>>>> Stashed changes:LabSolution/UPVTubeGUI/UPVTubeUploadContentForm.cs
         {
             InitializeComponent();
+        }
+        public UPVTubeFormBase(IUPVTubeService service) : this()
+        {
             this.service = service;
             this.newSubjectForm = new NewSubjectForm(this, service);
             LoadData();

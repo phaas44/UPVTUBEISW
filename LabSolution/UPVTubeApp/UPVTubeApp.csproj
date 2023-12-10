@@ -5,10 +5,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E47DBCD4-5E63-4203-8314-1AB0FCF058F0}</ProjectGuid>
+    <ProjectGuid>{66849A4B-ADFA-4394-97AD-725E13F133B1}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>UPVTubeGUI</RootNamespace>
-    <AssemblyName>UPVTubeGUI</AssemblyName>
+    <RootNamespace>UPVTubeApp</RootNamespace>
+    <AssemblyName>UPVTubeApp</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -56,6 +56,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< Updated upstream:LabSolution/UPVTubeApp/UPVTubeApp.csproj
+    <Compile Include="Forms\UPVTubeApp.cs">
+=======
     <Compile Include="NewSubjectForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,19 +66,28 @@
       <DependentUpon>NewSubjectForm.cs</DependentUpon>
     </Compile>
     <Compile Include="RegisterNewUserForm.cs">
+>>>>>>> Stashed changes:LabSolution/UPVTubeGUI/UPVTubeGUI.csproj
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RegisterNewUserForm.Designer.cs">
-      <DependentUpon>RegisterNewUserForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UPVTubeApp.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UPVTubeApp.Designer.cs">
+    <Compile Include="Forms\UPVTubeApp.Designer.cs">
       <DependentUpon>UPVTubeApp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UPVTubeFormBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UPVTubeFormBase.Designer.cs">
+      <DependentUpon>UPVTubeFormBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UPVTubeLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UPVTubeLogin.Designer.cs">
+      <DependentUpon>UPVTubeLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+<<<<<<< Updated upstream:LabSolution/UPVTubeApp/UPVTubeApp.csproj
+=======
     <Compile Include="UPVTubeLoggedInForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +103,7 @@
     <EmbeddedResource Include="NewSubjectForm.resx">
       <DependentUpon>NewSubjectForm.cs</DependentUpon>
     </EmbeddedResource>
+>>>>>>> Stashed changes:LabSolution/UPVTubeGUI/UPVTubeGUI.csproj
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -99,7 +112,10 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+<<<<<<< Updated upstream:LabSolution/UPVTubeApp/UPVTubeApp.csproj
+=======
     <EmbeddedResource Include="RegisterNewUserForm.resx">
       <DependentUpon>RegisterNewUserForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -112,6 +128,7 @@
     <EmbeddedResource Include="UPVTubeUploadContentForm.resx">
       <DependentUpon>UPVTubeUploadContentForm.cs</DependentUpon>
     </EmbeddedResource>
+>>>>>>> Stashed changes:LabSolution/UPVTubeGUI/UPVTubeGUI.csproj
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
