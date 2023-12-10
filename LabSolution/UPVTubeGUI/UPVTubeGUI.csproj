@@ -62,6 +62,12 @@
     <Compile Include="NewSubjectForm.Designer.cs">
       <DependentUpon>NewSubjectForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="PendingReviewContentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PendingReviewContentForm.Designer.cs">
+      <DependentUpon>PendingReviewContentForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UPVTubeLoginForm.cs">
       <SubType>Form</SubType>
     </Compile>

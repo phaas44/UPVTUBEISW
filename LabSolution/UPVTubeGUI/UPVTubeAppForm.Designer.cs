@@ -35,6 +35,7 @@
             this.reviewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.systemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.LogoutStrip = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewPendingContentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -76,6 +77,8 @@
             // 
             // reviewToolStripMenuItem
             // 
+            this.reviewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.viewPendingContentToolStripMenuItem});
             this.reviewToolStripMenuItem.Name = "reviewToolStripMenuItem";
             this.reviewToolStripMenuItem.Size = new System.Drawing.Size(82, 29);
             this.reviewToolStripMenuItem.Text = "Review";
@@ -94,6 +97,13 @@
             this.LogoutStrip.Size = new System.Drawing.Size(171, 34);
             this.LogoutStrip.Text = "Logout";
             this.LogoutStrip.Click += new System.EventHandler(this.LogoutStrip_Click);
+            // 
+            // viewPendingContentToolStripMenuItem
+            // 
+            this.viewPendingContentToolStripMenuItem.Name = "viewPendingContentToolStripMenuItem";
+            this.viewPendingContentToolStripMenuItem.Size = new System.Drawing.Size(288, 34);
+            this.viewPendingContentToolStripMenuItem.Text = "View Pending Content";
+            this.viewPendingContentToolStripMenuItem.Click += new System.EventHandler(this.ViewPendingContentStrip_Click);
             // 
             // UPVTubeAppForm
             // 
@@ -121,5 +131,6 @@
         private System.Windows.Forms.ToolStripMenuItem LogoutStrip;
         private System.Windows.Forms.ToolStripMenuItem searchContentToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem uploadContentToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem viewPendingContentToolStripMenuItem;
     }
 }
