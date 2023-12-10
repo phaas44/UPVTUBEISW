@@ -61,7 +61,7 @@ namespace UPVTubeGUI
 
                     //Create next displayed form.
                     loggedInForm = new UPVTubeLoggedInForm(service);
-                    loggedInForm.Show();
+                    loggedInForm.ShowDialog();
 
                 }
 
@@ -91,7 +91,6 @@ namespace UPVTubeGUI
         private void CreateSampleDBStrip_Click(object sender, EventArgs e)
         {
             service.DBInitialization();
-            service.Commit();
 
             MessageBox.Show("Sample Database has been created!");
         }

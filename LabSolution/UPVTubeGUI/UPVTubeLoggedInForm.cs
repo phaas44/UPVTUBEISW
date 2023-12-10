@@ -34,7 +34,7 @@ namespace UPVTubeGUI
         private void UploadContentStrip_Click(object sender, EventArgs e)
         {
             uploadContentForm = new UPVTubeUploadContentForm(service);
-            uploadContentForm.Show();
+            uploadContentForm.ShowDialog();
         }
     }
 }

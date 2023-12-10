@@ -1,6 +1,6 @@
-﻿namespace UPVTubeGUI
+﻿namespace UPVTube.Presentation.Forms
 {
-    partial class UPVTubeUploadContentForm
+    partial class UPVTubeApp
     {
         /// <summary>
         /// Required designer variable.
@@ -151,6 +151,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+<<<<<<< Updated upstream:LabSolution/UPVTubeApp/Forms/UPVTubeApp.Designer.cs
+            this.Text = "UPVTubeApp";
+=======
             this.Controls.Add(this.AddCourseButton);
             this.Controls.Add(this.CoursesCheckBoxList);
             this.Controls.Add(this.AddButton);
@@ -168,6 +171,7 @@
             this.ResumeLayout(false);
             this.PerformLayout();
 
+>>>>>>> Stashed changes:LabSolution/UPVTubeGUI/UPVTubeUploadContentForm.Designer.cs
         }
 
         #endregion
