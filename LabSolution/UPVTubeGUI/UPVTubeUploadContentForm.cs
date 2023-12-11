@@ -83,6 +83,8 @@ namespace UPVTubeGUI
                 {
                     service.UploadNewContent(content, courses);
                     MessageBox.Show("Content has been created and stored.");
+                    this.Close();
+
 
                 }
 

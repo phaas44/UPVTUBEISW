@@ -41,6 +41,7 @@ namespace UPVTubeGUI
 
                     string course = code + ", " + name;
                     uploadContentForm.UpdateSubjectsList(course);
+                    this.Close();
 
                 }
 
