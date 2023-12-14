@@ -11,7 +11,7 @@ namespace UPVTube.Services
     {
         void DBInitialization();
         void AddSubject(Subject s);
-        void RegisterNewUser(string email, string name, DateTime date, string nick, string password);
+        void RegisterNewUser(string email, string name, string nick, string password);
 
         void RemoveAllData();
 

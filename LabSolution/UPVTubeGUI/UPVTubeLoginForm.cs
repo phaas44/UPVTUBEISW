@@ -50,29 +50,20 @@ namespace UPVTubeGUI
             string nickname = NicknameInput.Text;
             string password = PasswordInput.Text;
 
-            if ((!string.IsNullOrEmpty(nickname))&&(!string.IsNullOrEmpty(password)))
+            try
             {
-                try
-                {
-                    service.LoginUser(nickname, password);
-                    MessageBox.Show("Login Successful!");
+                service.LoginUser(nickname, password);
+                MessageBox.Show("Login Successful!");
 
-                    //Create next displayed form.
-                    loggedInForm = new UPVTubeAppForm(service);
-                    loggedInForm.ShowDialog();
-
-                }
-
-                catch (Exception ex) {
-
-                    MessageBox.Show(ex.Message);
-                }
+                //Create next displayed form.
+                loggedInForm = new UPVTubeAppForm(service);
+                loggedInForm.ShowDialog();
 
             }
 
-            else
-            {
-                MessageBox.Show("Provide Nickname or Password wich is not empty.");
+            catch (Exception ex) {
+
+                MessageBox.Show(ex.Message);
             }
 
 

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using UPVTube.Persistence;
 using UPVTube.Entities;
 using System.Xml.Linq;
+using System.Data.Entity.Infrastructure;
 
 namespace UPVTube.Services
 {
@@ -104,31 +105,54 @@ namespace UPVTube.Services
         }
 
 
-        public void RegisterNewUser(string email, string name, DateTime date, string nick, string password)
+        public void RegisterNewUser(string email, string name, string nick, string password)
         {
-            Member newMember = new Member(email, name, date, nick, password);
+            //Check if email, nick or password are empty
+            if (string.IsNullOrEmpty(email)) throw new ServiceException("Please provide an email address.");
+            if (string.IsNullOrEmpty(nick)) throw new ServiceException("Please provide a nick.");
+            if (string.IsNullOrEmpty(password)) throw new ServiceException("Please provide a password.");
 
-            //Check if Member is not already in the system
-            if (dal.GetById<Member>(newMember.Nick) == null)
+
+            
+
+            //Check if Member nick or email is not already in the system
+            if (dal.GetById<Member>(nick) == null)
             {
-                dal.Insert(newMember);
-                dal.Commit();
+                if (dal.GetWhere<Member>(m => m.Email == email) == null)
+                {
+                    DateTime date = DateTime.Now;
+                    Member newMember = new Member(email, name, date, nick, password);
+
+                    dal.Insert(newMember);
+                    dal.Commit();
+
+                }
+
+                else throw new ServiceException("This email address already has been used.");
+                
             }
 
-            else throw new ServiceException("Member already exists.");
+            else throw new ServiceException("This nick already exists.");
         }
 
         public void LoginUser(string nick, string password)
         {
+            //Check if nick or password are null or empty
+            if (string.IsNullOrEmpty(nick)) throw new ServiceException("Please provide a nick.");
+            if (string.IsNullOrEmpty(password)) throw new ServiceException("Please provide a password.");
+
+
+            Member user = dal.GetById<Member>(nick);
+
             //Check if user is not registered: throw error
-            if (dal.GetById<Member>(nick) == null)
+            if (user == null)
             {
                 throw new ServiceException("Member not registered!");
             }
 
             //User is registered: ask for credentials
             
-            if (dal.GetById<Member>(nick).Password != password)
+            if (user.Password != password)
             {
                 throw new ServiceException("Provided nick or password is wrong!");
             }
@@ -138,7 +162,7 @@ namespace UPVTube.Services
 
             //Load Member object from database
 
-            Member user = dal.GetById<Member>(nick);
+            
             this.Logged = user;
 
         }
