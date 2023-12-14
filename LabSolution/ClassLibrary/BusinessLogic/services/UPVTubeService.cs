@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using UPVTube.Persistence;
 using UPVTube.Entities;
 using System.Xml.Linq;
+using System.Data.Entity.Infrastructure;
 
 namespace UPVTube.Services
 {
@@ -120,15 +121,22 @@ namespace UPVTube.Services
 
         public void LoginUser(string nick, string password)
         {
+
+            if (string.IsNullOrEmpty(nick)) throw new ServiceException("Please provide a nick.");
+            if (string.IsNullOrEmpty(password)) throw new ServiceException("Please provide a password.");
+
+
+            Member user = dal.GetById<Member>(nick);
+
             //Check if user is not registered: throw error
-            if (dal.GetById<Member>(nick) == null)
+            if (user == null)
             {
                 throw new ServiceException("Member not registered!");
             }
 
             //User is registered: ask for credentials
             
-            if (dal.GetById<Member>(nick).Password != password)
+            if (user.Password != password)
             {
                 throw new ServiceException("Provided nick or password is wrong!");
             }
@@ -138,7 +146,7 @@ namespace UPVTube.Services
 
             //Load Member object from database
 
-            Member user = dal.GetById<Member>(nick);
+            
             this.Logged = user;
 
         }
