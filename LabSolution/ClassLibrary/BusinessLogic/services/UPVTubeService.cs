@@ -78,7 +78,8 @@ namespace UPVTube.Services
             dal.Insert<Visualization>(v1);
 
             c1.AddSubject(s1);
-            
+
+            Commit();
 
 
         }
@@ -246,6 +247,21 @@ namespace UPVTube.Services
             Content content = dal.GetById<Content>(contentId);
             Evaluation eval = new Evaluation(DateTime.Now, RejectionReason, content.Owner, content);
             content.Evaluation = eval;
+        }
+
+        public Member GetLoggedInMember()
+        {
+            if(this.Logged != null)
+            {
+                return this.Logged;
+            }
+            
+            else { throw new ServiceException("No User logged in."); }
+        }
+
+        public List<Subject> GetAllSubjects()
+        {
+            return dal.GetAll<Subject>().ToList();
         }
 
 
