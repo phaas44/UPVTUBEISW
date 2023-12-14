@@ -171,8 +171,7 @@ namespace UPVTube.Services
         {
             if (this.Logged != null)
             {
-                Member m = dal.GetById<Member>(this.Logged.Nick);
-                m.LastAccessDate = DateTime.Now;
+                this.Logged.LastAccessDate = DateTime.Now;
                 dal.Commit();
 
                 this.Logged = null;
@@ -182,6 +181,9 @@ namespace UPVTube.Services
 
         public void UploadNewContent(Content c, List<int> related)
         {
+            if (c == null || !VerifyContentData(c.Title, c.Description, c.ContentURI)) 
+                throw new ServiceException("Please provide a valid content!");
+            
             if (this.Logged == null) throw new ServiceException("User is not logged in!");
 
             if (related.Count > 3) throw new ServiceException("Only up to 3 different subjects can be added!");
@@ -193,6 +195,8 @@ namespace UPVTube.Services
                     foreach (int n in related)
                     {
                         Subject subject = dal.GetById<Subject>(n);
+                        if (subject == null) throw new ServiceException("One or more of the subjects provided do not exist!");
+                        
                         c.AddSubject(subject);
                         subject.AddContent(c);
                     }
