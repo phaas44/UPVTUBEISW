@@ -49,5 +49,10 @@ namespace UPVTubeGUI
             pendingReviewContentForm = new PendingReviewContentForm(service);
             pendingReviewContentForm.ShowDialog();
         }
+
+        private void UPVTubeAppForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

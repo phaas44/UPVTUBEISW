@@ -68,6 +68,12 @@
     <Compile Include="PendingReviewContentForm.Designer.cs">
       <DependentUpon>PendingReviewContentForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="RegisterUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegisterUserForm.Designer.cs">
+      <DependentUpon>RegisterUserForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UPVTubeLoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +106,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="RegisterUserForm.resx">
+      <DependentUpon>RegisterUserForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UPVTubeLoginForm.resx">
       <DependentUpon>UPVTubeLoginForm.cs</DependentUpon>
     </EmbeddedResource>

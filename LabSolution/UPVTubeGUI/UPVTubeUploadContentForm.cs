@@ -26,6 +26,7 @@ namespace UPVTubeGUI
             LoadData();
         }
 
+
         private void LoadData()
         {
             CoursesCheckBoxList.Items.Clear();
@@ -99,6 +100,11 @@ namespace UPVTubeGUI
             else { MessageBox.Show("Provide at least title, URI and description."); }
 
             
+        }
+
+        private void UPVTubeUploadContentForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
