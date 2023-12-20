@@ -118,7 +118,7 @@ namespace UPVTube.Services
             //Check if Member nick or email is not already in the system
             if (dal.GetById<Member>(nick) == null)
             {
-                if (dal.GetWhere<Member>(m => m.Email == email) == null)
+                if (!dal.GetWhere<Member>(m => m.Email == email).Any())
                 {
                     DateTime date = DateTime.Now;
                     Member newMember = new Member(email, name, date, nick, password);
