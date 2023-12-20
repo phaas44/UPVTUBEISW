@@ -115,6 +115,7 @@
             this.Register_button.TabIndex = 8;
             this.Register_button.Text = "Register";
             this.Register_button.UseVisualStyleBackColor = true;
+            this.Register_button.Click += new System.EventHandler(this.RegisterUserClick);
             // 
             // RegisterUserForm
             // 
