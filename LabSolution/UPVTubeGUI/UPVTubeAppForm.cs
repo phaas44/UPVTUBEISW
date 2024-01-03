@@ -49,5 +49,19 @@ namespace UPVTubeGUI
             pendingReviewContentForm = new PendingReviewContentForm(service);
             pendingReviewContentForm.ShowDialog();
         }
+
+        private void CheckUserType_Click(object sender, EventArgs e)
+        {
+            if (service.IsStudent())
+            {
+                MessageBox.Show("User is of type Student.");
+            }
+            else if(service.IsProfessor()) {
+
+                MessageBox.Show("User is of type Professor.");
+            }
+
+            else { MessageBox.Show("User is not Member of UPV."); }
+        }
     }
 }

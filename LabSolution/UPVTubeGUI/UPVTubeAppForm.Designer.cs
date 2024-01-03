@@ -33,9 +33,10 @@
             this.searchContentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.uploadContentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reviewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewPendingContentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.systemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.LogoutStrip = new System.Windows.Forms.ToolStripMenuItem();
-            this.viewPendingContentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkUserTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -83,10 +84,18 @@
             this.reviewToolStripMenuItem.Size = new System.Drawing.Size(82, 29);
             this.reviewToolStripMenuItem.Text = "Review";
             // 
+            // viewPendingContentToolStripMenuItem
+            // 
+            this.viewPendingContentToolStripMenuItem.Name = "viewPendingContentToolStripMenuItem";
+            this.viewPendingContentToolStripMenuItem.Size = new System.Drawing.Size(288, 34);
+            this.viewPendingContentToolStripMenuItem.Text = "View Pending Content";
+            this.viewPendingContentToolStripMenuItem.Click += new System.EventHandler(this.ViewPendingContentStrip_Click);
+            // 
             // systemToolStripMenuItem
             // 
             this.systemToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.LogoutStrip});
+            this.LogoutStrip,
+            this.checkUserTypeToolStripMenuItem});
             this.systemToolStripMenuItem.Name = "systemToolStripMenuItem";
             this.systemToolStripMenuItem.Size = new System.Drawing.Size(85, 29);
             this.systemToolStripMenuItem.Text = "System";
@@ -94,16 +103,16 @@
             // LogoutStrip
             // 
             this.LogoutStrip.Name = "LogoutStrip";
-            this.LogoutStrip.Size = new System.Drawing.Size(171, 34);
+            this.LogoutStrip.Size = new System.Drawing.Size(270, 34);
             this.LogoutStrip.Text = "Logout";
             this.LogoutStrip.Click += new System.EventHandler(this.LogoutStrip_Click);
             // 
-            // viewPendingContentToolStripMenuItem
+            // checkUserTypeToolStripMenuItem
             // 
-            this.viewPendingContentToolStripMenuItem.Name = "viewPendingContentToolStripMenuItem";
-            this.viewPendingContentToolStripMenuItem.Size = new System.Drawing.Size(288, 34);
-            this.viewPendingContentToolStripMenuItem.Text = "View Pending Content";
-            this.viewPendingContentToolStripMenuItem.Click += new System.EventHandler(this.ViewPendingContentStrip_Click);
+            this.checkUserTypeToolStripMenuItem.Name = "checkUserTypeToolStripMenuItem";
+            this.checkUserTypeToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.checkUserTypeToolStripMenuItem.Text = "Check User Type";
+            this.checkUserTypeToolStripMenuItem.Click += new System.EventHandler(this.CheckUserType_Click);
             // 
             // UPVTubeAppForm
             // 
@@ -132,5 +141,6 @@
         private System.Windows.Forms.ToolStripMenuItem searchContentToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem uploadContentToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewPendingContentToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem checkUserTypeToolStripMenuItem;
     }
 }
