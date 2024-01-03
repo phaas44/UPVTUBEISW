@@ -36,7 +36,6 @@
             this.viewPendingContentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.systemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.LogoutStrip = new System.Windows.Forms.ToolStripMenuItem();
-            this.checkUserTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -94,8 +93,7 @@
             // systemToolStripMenuItem
             // 
             this.systemToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.LogoutStrip,
-            this.checkUserTypeToolStripMenuItem});
+            this.LogoutStrip});
             this.systemToolStripMenuItem.Name = "systemToolStripMenuItem";
             this.systemToolStripMenuItem.Size = new System.Drawing.Size(85, 29);
             this.systemToolStripMenuItem.Text = "System";
@@ -106,13 +104,6 @@
             this.LogoutStrip.Size = new System.Drawing.Size(270, 34);
             this.LogoutStrip.Text = "Logout";
             this.LogoutStrip.Click += new System.EventHandler(this.LogoutStrip_Click);
-            // 
-            // checkUserTypeToolStripMenuItem
-            // 
-            this.checkUserTypeToolStripMenuItem.Name = "checkUserTypeToolStripMenuItem";
-            this.checkUserTypeToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
-            this.checkUserTypeToolStripMenuItem.Text = "Check User Type";
-            this.checkUserTypeToolStripMenuItem.Click += new System.EventHandler(this.CheckUserType_Click);
             // 
             // UPVTubeAppForm
             // 
@@ -141,6 +132,5 @@
         private System.Windows.Forms.ToolStripMenuItem searchContentToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem uploadContentToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewPendingContentToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem checkUserTypeToolStripMenuItem;
     }
 }

@@ -24,12 +24,15 @@ namespace UPVTubeGUI
             this.service = service;
         }
 
-        private void LogoutStrip_Click(object sender, EventArgs e)
+        private void UPVTubeAppForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             service.LogoutUser();
-            MessageBox.Show("Successfully logged out.");
-            this.Close();
+            MessageBox.Show("Logged out.");
+        }
 
+        private void LogoutStrip_Click(object sender, EventArgs e)
+        {
+            this.Close(); //Automatically logs out since UPVTubeAppForm_FormClosing is called.
         }
 
         private void UploadContentStrip_Click(object sender, EventArgs e)
@@ -38,18 +41,13 @@ namespace UPVTubeGUI
             uploadContentForm.ShowDialog();
         }
 
-        private void UPVTubeAppForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            service.LogoutUser();
-            MessageBox.Show("Logged out.");
-        }
-
         private void ViewPendingContentStrip_Click(object sender, EventArgs e)
         {
             pendingReviewContentForm = new PendingReviewContentForm(service);
             pendingReviewContentForm.ShowDialog();
         }
 
+        /*
         private void CheckUserType_Click(object sender, EventArgs e)
         {
             if (service.IsStudent())
@@ -63,5 +61,7 @@ namespace UPVTubeGUI
 
             else { MessageBox.Show("User is not Member of UPV."); }
         }
+        */
+
     }
 }
