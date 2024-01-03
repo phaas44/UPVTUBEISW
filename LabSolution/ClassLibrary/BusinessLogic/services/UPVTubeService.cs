@@ -292,6 +292,16 @@ namespace UPVTube.Services
             return dal.GetAll<Subject>().ToList();
         }
 
+        public bool IsProfessor()
+        {
+            return Domains.IsTeacherDomain(this.Logged.Email);
+        }
+
+        public bool IsStudent()
+        {
+            return Domains.IsStudentDomain(this.Logged.Email);
+        }
+
 
 
 

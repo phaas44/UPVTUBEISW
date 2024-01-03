@@ -29,5 +29,9 @@ namespace UPVTube.Services
         Member GetLoggedInMember();
 
         List<Subject> GetAllSubjects();
+
+        bool IsProfessor();
+
+        bool IsStudent();
     }
 }
