@@ -324,6 +324,21 @@ namespace UPVTube.Services
             else { throw new ServiceException("Logged in user is not an UPV meber."); }
         }
 
+        public void RemoveSubscription(Member Subscribed)
+        {
+            if (this.Logged == null) { throw new ServiceException("Login first to unsubscribe."); }
+
+            if (Domains.IsStudentDomain(this.Logged.Email) || Domains.IsTeacherDomain(this.Logged.Email))
+            {
+
+                Subscribed.Subscriptors.Remove(this.Logged);
+                
+                this.Logged.SubscribedTo.Remove(Subscribed);
+            }
+
+            else { throw new ServiceException("Logged in user is not an UPV meber."); }
+        }
+
 
 
 
