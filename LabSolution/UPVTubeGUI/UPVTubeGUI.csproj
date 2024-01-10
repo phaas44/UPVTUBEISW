@@ -106,6 +106,12 @@
     <Compile Include="UPVTubeSearchForm.Designer.cs">
       <DependentUpon>UPVTubeSearchForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UPVTubeShowContentDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UPVTubeShowContentDetails.Designer.cs">
+      <DependentUpon>UPVTubeShowContentDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="UPVTubeUploadContentForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,6 +147,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UPVTubeSearchForm.resx">
       <DependentUpon>UPVTubeSearchForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UPVTubeShowContentDetails.resx">
+      <DependentUpon>UPVTubeShowContentDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UPVTubeUploadContentForm.resx">
       <DependentUpon>UPVTubeUploadContentForm.cs</DependentUpon>

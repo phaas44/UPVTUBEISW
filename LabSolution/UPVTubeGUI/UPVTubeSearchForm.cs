@@ -15,6 +15,7 @@ namespace UPVTubeGUI
     public partial class UPVTubeSearchForm : Form
     {
         private IUPVTubeService service;
+        private UPVTubeShowContentDetails showdetails;
         public UPVTubeSearchForm(IUPVTubeService service)
         {
             this.service = service;
@@ -46,19 +47,35 @@ namespace UPVTubeGUI
 
 
             List<string> courses = new List<string>();
-            foreach (string str_code in CoursesCheckBoxList.CheckedItems.Cast<string>())
+            if(CoursesCheckBoxList.CheckedItems.Cast<string>().Count() != 0)
             {
-                int index = str_code.IndexOf(",");
-                int end = str_code.Length-1;
-                string substring = str_code.Substring(index, end);
-                courses.Add(substring);
+                foreach (string str_code in CoursesCheckBoxList.CheckedItems.Cast<string>())
+                {
+                    int index = str_code.IndexOf(",");
+                    string substring = str_code.Substring(index + 2, str_code.Length - 1 - (index + 1));
+                    courses.Add(substring);
 
+                }
             }
+            
 
             List<Content> searchedContent = new List<Content>();   
             try
             {
-                searchedContent.AddRange(service.SearchContent(startDate, endDate, nick, title, ""));
+                if(courses.Count > 0) 
+                {
+                    foreach (string course in courses)
+                    {
+                        searchedContent.AddRange(service.SearchContent(startDate, endDate, nick, title, course));
+                    }
+                }
+
+                else
+                {
+                    searchedContent.AddRange(service.SearchContent(startDate, endDate, nick, title, ""));
+                }
+                
+                
             }
 
             catch(Exception ex) { MessageBox.Show(ex.Message); }
@@ -87,5 +104,37 @@ namespace UPVTubeGUI
         {
 
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void searcheddataGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
+        private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //MessageBox.Show(e.RowIndex.ToString());
+        }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //MessageBox.Show(e.RowIndex.ToString());
+            int index = e.RowIndex;
+            DataGridViewRow row = dataGridView1.Rows[index];
+            string cont_uri= row.Cells[0].Value.ToString();
+            try
+            {
+                Content content = service.GetContentDetails(cont_uri);
+                showdetails = new UPVTubeShowContentDetails(service, content);
+                showdetails.ShowDialog();
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+
+        }
+    
     }
 }

@@ -39,5 +39,7 @@ namespace UPVTube.Services
         void AddSubscription( string nickSubscribed);
 
         void RemoveSubscription( string nickSubscribed);
+
+        Content GetContentDetails(string contentURI);
     }
 }

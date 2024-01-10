@@ -359,6 +359,18 @@ namespace UPVTube.Services
             else { throw new ServiceException("Logged in user is not an UPV meber."); }
         }
 
+        public Content GetContentDetails(string contentId)
+        {
+            List<Content> contents = new List<Content>();
+            contents.AddRange(dal.GetWhere<Content>(c => c.ContentURI== contentId).ToList()); 
+
+            if(contents.Count > 1) { throw new ServiceException("There are multiple contents with the same URI!"); }
+            
+            if (contents[0] == null) { throw new ServiceException("Content for according contentID cannot be found."); }
+
+            return contents[0];
+        }
+
 
 
 
