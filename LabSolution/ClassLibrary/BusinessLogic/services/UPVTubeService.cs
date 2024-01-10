@@ -310,6 +310,20 @@ namespace UPVTube.Services
             return Domains.IsStudentDomain(this.Logged.Email);
         }
 
+        //Only Suscribed needed since only a loged in person can subscribe.
+        public void AddSubscription(Member Subscribed)
+        {
+            if(this.Logged == null) { throw new ServiceException("Login first to subscribe."); }
+
+            if(Domains.IsStudentDomain(this.Logged.Email) || Domains.IsTeacherDomain(this.Logged.Email))
+            {
+                Subscribed.Subscriptors.Add(this.Logged);
+                this.Logged.SubscribedTo.Add(Subscribed);
+            }
+
+            else { throw new ServiceException("Logged in user is not an UPV meber."); }
+        }
+
 
 
 

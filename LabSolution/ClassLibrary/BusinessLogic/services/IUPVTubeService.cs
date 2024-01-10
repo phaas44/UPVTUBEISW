@@ -35,5 +35,7 @@ namespace UPVTube.Services
         bool IsProfessor();
 
         bool IsStudent();
+
+        void AddSubscription( Member Subscribed);
     }
 }
