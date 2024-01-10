@@ -60,7 +60,7 @@ namespace UPVTubeGUI
                     ds_URI = c.ContentURI,
                     ds_Description = c.Description,
                     ds_UploadDate = c.UploadDate,
-                    ds_Owner = c.Owner
+                    ds_Owner = c.Owner.Nick
                 });
 
             newcontentbindingSource.DataSource = bindinglist;
