@@ -36,8 +36,8 @@ namespace UPVTube.Services
 
         bool IsStudent();
 
-        void AddSubscription( Member Subscribed);
+        void AddSubscription( string nickSubscribed);
 
-        void RemoveSubscription( Member Subscribed);
+        void RemoveSubscription( string nickSubscribed);
     }
 }

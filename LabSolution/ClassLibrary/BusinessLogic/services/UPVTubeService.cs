@@ -311,22 +311,38 @@ namespace UPVTube.Services
         }
 
         //Only Suscribed needed since only a loged in person can subscribe.
-        public void AddSubscription(Member Subscribed)
+        public void AddSubscription(string nickSubscribed)
         {
             if(this.Logged == null) { throw new ServiceException("Login first to subscribe."); }
 
-            if(Domains.IsStudentDomain(this.Logged.Email) || Domains.IsTeacherDomain(this.Logged.Email))
+            Member Subscribed = dal.GetById<Member>(nickSubscribed);
+
+            if(Subscribed == null) { throw new ServiceException("Subscribed person does not exist."); }
+            
+            if(Domains.IsUPVMemberDomain(this.Logged.Email))
             {
-                Subscribed.Subscriptors.Add(this.Logged);
-                this.Logged.SubscribedTo.Add(Subscribed);
+                if (this.Logged.SubscribedTo.Any(m => m.Nick == Subscribed.Nick)) { throw new ServiceException("You alraedy subscribed to this content creator."); }
+
+                else
+                {
+                    Subscribed.Subscriptors.Add(this.Logged);
+                    this.Logged.SubscribedTo.Add(Subscribed);
+                    Commit();
+
+                }
+
             }
 
             else { throw new ServiceException("Logged in user is not an UPV meber."); }
         }
 
-        public void RemoveSubscription(Member Subscribed)
+        public void RemoveSubscription(string nickSubscribed)
         {
             if (this.Logged == null) { throw new ServiceException("Login first to unsubscribe."); }
+
+            Member Subscribed = dal.GetById<Member>(nickSubscribed);
+
+            if( Subscribed == null) { throw new ServiceException("Subscribed person does not exist."); }
 
             if (Domains.IsUPVMemberDomain(this.Logged.Email))
             {
@@ -334,6 +350,8 @@ namespace UPVTube.Services
                 Subscribed.Subscriptors.Remove(this.Logged);
                 
                 this.Logged.SubscribedTo.Remove(Subscribed);
+
+                Commit();
             }
 
             else { throw new ServiceException("Logged in user is not an UPV meber."); }

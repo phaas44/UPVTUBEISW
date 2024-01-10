@@ -28,8 +28,16 @@ namespace UPVTubeGUI
 
         private void LoadData()
         {
+            
+            //service.AddSubscription("fjaen");
+            /*
+            Content cont = new Content("www.es.es","bla", false, "bla",DateTime.Now,fjaen);
+            List<int> sub = new List<int>();
+            service.UploadNewContent(cont,sub);
+            */
             Member logged = service.GetLoggedInMember();
             DateTime lastLogin = logged.LastAccessDate;
+
 
             List<Content> newContent = new List<Content>();
             
@@ -47,11 +55,11 @@ namespace UPVTubeGUI
                 {
                     //ds_... are DataPropertyNames defined in the DataGridView object
                     //see DataGridView column definitions in Visual Studio Designer
-                    Title = c.Title,
-                    URI = c.ContentURI,
-                    Description = c.Description,
-                    UploadDate = c.UploadDate,
-                    Owner = c.Owner
+                    ds_Title = c.Title,
+                    ds_URI = c.ContentURI,
+                    ds_Description = c.Description,
+                    ds_UploadDate = c.UploadDate,
+                    ds_Owner = c.Owner
                 });
 
             newcontentbindingSource.DataSource = bindinglist;

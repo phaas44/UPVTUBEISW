@@ -141,6 +141,7 @@
             this.subscriptionsdataGridView.DataSource = this.newcontentbindingSource;
             this.subscriptionsdataGridView.Location = new System.Drawing.Point(25, 88);
             this.subscriptionsdataGridView.Name = "subscriptionsdataGridView";
+            this.subscriptionsdataGridView.ReadOnly = true;
             this.subscriptionsdataGridView.RowHeadersWidth = 62;
             this.subscriptionsdataGridView.RowTemplate.Height = 28;
             this.subscriptionsdataGridView.Size = new System.Drawing.Size(756, 327);
@@ -148,6 +149,7 @@
             // 
             // Title
             // 
+            this.Title.DataPropertyName = "ds_Title";
             this.Title.HeaderText = "Title";
             this.Title.MinimumWidth = 8;
             this.Title.Name = "Title";
@@ -156,6 +158,7 @@
             // 
             // URI
             // 
+            this.URI.DataPropertyName = "ds_URI";
             this.URI.HeaderText = "URI";
             this.URI.MinimumWidth = 8;
             this.URI.Name = "URI";
@@ -164,6 +167,7 @@
             // 
             // Description
             // 
+            this.Description.DataPropertyName = "ds_Description";
             this.Description.HeaderText = "Description";
             this.Description.MinimumWidth = 8;
             this.Description.Name = "Description";
@@ -172,6 +176,7 @@
             // 
             // UploadDate
             // 
+            this.UploadDate.DataPropertyName = "ds_UploadDate";
             this.UploadDate.HeaderText = "Upload Date";
             this.UploadDate.MinimumWidth = 8;
             this.UploadDate.Name = "UploadDate";
@@ -180,6 +185,7 @@
             // 
             // Owner
             // 
+            this.Owner.DataPropertyName = "ds_Owner";
             this.Owner.HeaderText = "Creator";
             this.Owner.MinimumWidth = 8;
             this.Owner.Name = "Owner";
