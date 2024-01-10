@@ -33,9 +33,9 @@
             this.searchContentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.uploadContentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reviewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewPendingContentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.systemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.LogoutStrip = new System.Windows.Forms.ToolStripMenuItem();
-            this.viewPendingContentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -83,6 +83,13 @@
             this.reviewToolStripMenuItem.Size = new System.Drawing.Size(82, 29);
             this.reviewToolStripMenuItem.Text = "Review";
             // 
+            // viewPendingContentToolStripMenuItem
+            // 
+            this.viewPendingContentToolStripMenuItem.Name = "viewPendingContentToolStripMenuItem";
+            this.viewPendingContentToolStripMenuItem.Size = new System.Drawing.Size(288, 34);
+            this.viewPendingContentToolStripMenuItem.Text = "View Pending Content";
+            this.viewPendingContentToolStripMenuItem.Click += new System.EventHandler(this.ViewPendingContentStrip_Click);
+            // 
             // systemToolStripMenuItem
             // 
             this.systemToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -94,16 +101,9 @@
             // LogoutStrip
             // 
             this.LogoutStrip.Name = "LogoutStrip";
-            this.LogoutStrip.Size = new System.Drawing.Size(171, 34);
+            this.LogoutStrip.Size = new System.Drawing.Size(270, 34);
             this.LogoutStrip.Text = "Logout";
             this.LogoutStrip.Click += new System.EventHandler(this.LogoutStrip_Click);
-            // 
-            // viewPendingContentToolStripMenuItem
-            // 
-            this.viewPendingContentToolStripMenuItem.Name = "viewPendingContentToolStripMenuItem";
-            this.viewPendingContentToolStripMenuItem.Size = new System.Drawing.Size(288, 34);
-            this.viewPendingContentToolStripMenuItem.Text = "View Pending Content";
-            this.viewPendingContentToolStripMenuItem.Click += new System.EventHandler(this.ViewPendingContentStrip_Click);
             // 
             // UPVTubeAppForm
             // 
