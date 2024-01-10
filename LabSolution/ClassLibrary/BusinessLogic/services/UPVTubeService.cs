@@ -48,7 +48,7 @@ namespace UPVTube.Services
             Member a1 = new Member("member.student@inf.upv.es", "Member Student", DateTime.Now, "MemberStudent", "1234");
             dal.Insert<Member>(a1); //adding to the DBset 
 
-            Content c1 = new Content("http://fake.uri.es", "Inheritance driven polymorphism explained", true, "Polymorphism", DateTime.Now, a1);
+            Content c1 = new Content("fake.uri.es", "Inheritance driven polymorphism explained", true, "Polymorphism", DateTime.Now, a1);
             a1.AddContent(c1);
             dal.Insert<Content>(c1);
 
@@ -227,6 +227,7 @@ namespace UPVTube.Services
             }
 
             List<Content> c = dal.GetWhere<Content>(cn => cn.Authorized == Authorized.Yes).ToList();
+            
             if (Start != null && End != null)
             {
                 c = c.Where(cn => cn.UploadDate < End && cn.UploadDate > Start).ToList();
@@ -238,7 +239,7 @@ namespace UPVTube.Services
             }
             if (title != "")
             {
-                c = c.Where(cn => cn.Title == title).ToList();
+                c = c.Where(cn => cn.Title.Contains(title)).ToList();
             }
             if (subject != "")
             {
@@ -246,6 +247,7 @@ namespace UPVTube.Services
             }
             if (!Domains.IsUPVMemberDomain(this.Logged.Email))
             {
+                //throw new ServiceException("Searcher not part of UPV.");
                 c.Where(cn => cn.IsPublic).ToList();
                 return c;
             }

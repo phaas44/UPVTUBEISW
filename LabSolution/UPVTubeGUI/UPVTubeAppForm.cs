@@ -19,6 +19,7 @@ namespace UPVTubeGUI
 
         private UPVTubeUploadContentForm uploadContentForm;
         private PendingReviewContentForm pendingReviewContentForm;
+        private UPVTubeSearchForm searchForm;
         public UPVTubeAppForm(IUPVTubeService service)
         {
             InitializeComponent();
@@ -43,7 +44,7 @@ namespace UPVTubeGUI
             
             foreach (Member subscribed in logged.SubscribedTo)
             {
-                newContent.AddRange(service.SearchContent(lastLogin, DateTime.Now, subscribed.Nick, null, null));
+                newContent.AddRange(service.SearchContent(lastLogin, DateTime.Now, subscribed.Nick, null, ""));
 
             }
 
@@ -98,6 +99,13 @@ namespace UPVTubeGUI
 
         private void label1_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void searchContentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            searchForm = new UPVTubeSearchForm(service);
+            searchForm.ShowDialog();
 
         }
 

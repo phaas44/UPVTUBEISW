@@ -39,12 +39,12 @@
             this.LogoutStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.TextLabel = new System.Windows.Forms.Label();
             this.subscriptionsdataGridView = new System.Windows.Forms.DataGridView();
-            this.newcontentbindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.URI = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UploadDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Owner = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.newcontentbindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.subscriptionsdataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.newcontentbindingSource)).BeginInit();
@@ -76,13 +76,14 @@
             // searchContentToolStripMenuItem
             // 
             this.searchContentToolStripMenuItem.Name = "searchContentToolStripMenuItem";
-            this.searchContentToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.searchContentToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.searchContentToolStripMenuItem.Text = "Search Content";
+            this.searchContentToolStripMenuItem.Click += new System.EventHandler(this.searchContentToolStripMenuItem_Click);
             // 
             // uploadContentToolStripMenuItem
             // 
             this.uploadContentToolStripMenuItem.Name = "uploadContentToolStripMenuItem";
-            this.uploadContentToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.uploadContentToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.uploadContentToolStripMenuItem.Text = "Upload Content";
             this.uploadContentToolStripMenuItem.Click += new System.EventHandler(this.UploadContentStrip_Click);
             // 
@@ -112,7 +113,7 @@
             // LogoutStrip
             // 
             this.LogoutStrip.Name = "LogoutStrip";
-            this.LogoutStrip.Size = new System.Drawing.Size(171, 34);
+            this.LogoutStrip.Size = new System.Drawing.Size(270, 34);
             this.LogoutStrip.Text = "Logout";
             this.LogoutStrip.Click += new System.EventHandler(this.LogoutStrip_Click);
             // 
