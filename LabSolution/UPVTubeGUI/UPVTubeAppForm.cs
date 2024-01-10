@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UPVTube.Services;
+using UPVTube.Entities;
 
 namespace UPVTubeGUI
 {
@@ -22,6 +23,42 @@ namespace UPVTubeGUI
         {
             InitializeComponent();
             this.service = service;
+            LoadData();
+        }
+
+        private void LoadData()
+        {
+            Member logged = service.GetLoggedInMember();
+            DateTime lastLogin = logged.LastAccessDate;
+
+            List<Content> newContent = new List<Content>();
+            
+            foreach (Member subscribed in logged.SubscribedTo)
+            {
+                newContent.AddRange(service.SearchContent(lastLogin, DateTime.Now, subscribed.Nick, null, null));
+
+            }
+
+            BindingList<object> bindinglist = new BindingList<object>();
+            foreach (Content c in newContent)
+
+                //Adding one anonymous object for each reservation obtained
+                bindinglist.Add(new
+                {
+                    //ds_... are DataPropertyNames defined in the DataGridView object
+                    //see DataGridView column definitions in Visual Studio Designer
+                    Title = c.Title,
+                    URI = c.ContentURI,
+                    Description = c.Description,
+                    UploadDate = c.UploadDate,
+                    Owner = c.Owner
+                });
+
+            newcontentbindingSource.DataSource = bindinglist;
+
+
+
+
         }
 
         private void UPVTubeAppForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -49,6 +86,11 @@ namespace UPVTubeGUI
                 pendingReviewContentForm.ShowDialog();
             }
             else MessageBox.Show("You must be a teacher to see content pending for review!");
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
 
         /*
