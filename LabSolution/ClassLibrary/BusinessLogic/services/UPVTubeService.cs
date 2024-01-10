@@ -60,6 +60,13 @@ namespace UPVTube.Services
             Member p1 = new Member("fjaen@dsic.upv.es", "Javier Jaen", DateTime.Now, "fjaen", "password");
             dal.Insert<Member>(p1);
 
+            Member p4 = new Member("asdf@dsic.upv.es", "asdf", DateTime.Now, "asdf", "password");
+            dal.Insert<Member>(p4);
+
+            Content c2 = new Content("A", "Inheritance driven polymorphism explained", false, "Polymorphism", DateTime.Now, p4);
+            p4.AddContent(c2);
+            dal.Insert<Content>(c2);
+
             //Create user not member of UPV
             Member p2 = new Member("notmember@gmail.com", "NotMember Person", DateTime.Now, "NotMember", "1234");
             dal.Insert<Member>(p2);
@@ -335,13 +342,17 @@ namespace UPVTube.Services
 
             }
 
-            else { throw new ServiceException("Logged in user is not an UPV meber."); }
+            else { throw new ServiceException("Logged in user is not an UPV member."); }
         }
 
         public void RemoveSubscription(string nickSubscribed)
         {
             if (this.Logged == null) { throw new ServiceException("Login first to unsubscribe."); }
-
+            
+            if(!this.Logged.SubscribedTo.Any(m => m.Nick == nickSubscribed))
+            {
+                throw new ServiceException("Logged in user did not subscribe to this content creator.");
+            }
             Member Subscribed = dal.GetById<Member>(nickSubscribed);
 
             if( Subscribed == null) { throw new ServiceException("Subscribed person does not exist."); }
@@ -356,7 +367,7 @@ namespace UPVTube.Services
                 Commit();
             }
 
-            else { throw new ServiceException("Logged in user is not an UPV meber."); }
+            else { throw new ServiceException("Logged in user is not an UPV member."); }
         }
 
         public Content GetContentDetails(string contentId)

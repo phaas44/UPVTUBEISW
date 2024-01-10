@@ -76,14 +76,14 @@
             // searchContentToolStripMenuItem
             // 
             this.searchContentToolStripMenuItem.Name = "searchContentToolStripMenuItem";
-            this.searchContentToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.searchContentToolStripMenuItem.Size = new System.Drawing.Size(240, 34);
             this.searchContentToolStripMenuItem.Text = "Search Content";
             this.searchContentToolStripMenuItem.Click += new System.EventHandler(this.searchContentToolStripMenuItem_Click);
             // 
             // uploadContentToolStripMenuItem
             // 
             this.uploadContentToolStripMenuItem.Name = "uploadContentToolStripMenuItem";
-            this.uploadContentToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.uploadContentToolStripMenuItem.Size = new System.Drawing.Size(240, 34);
             this.uploadContentToolStripMenuItem.Text = "Upload Content";
             this.uploadContentToolStripMenuItem.Click += new System.EventHandler(this.UploadContentStrip_Click);
             // 
@@ -113,7 +113,7 @@
             // LogoutStrip
             // 
             this.LogoutStrip.Name = "LogoutStrip";
-            this.LogoutStrip.Size = new System.Drawing.Size(270, 34);
+            this.LogoutStrip.Size = new System.Drawing.Size(171, 34);
             this.LogoutStrip.Text = "Logout";
             this.LogoutStrip.Click += new System.EventHandler(this.LogoutStrip_Click);
             // 
@@ -147,6 +147,7 @@
             this.subscriptionsdataGridView.RowTemplate.Height = 28;
             this.subscriptionsdataGridView.Size = new System.Drawing.Size(756, 327);
             this.subscriptionsdataGridView.TabIndex = 2;
+            this.subscriptionsdataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.subscriptionsdataGridView_CellDoubleClick);
             // 
             // Title
             // 

@@ -44,6 +44,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.DescriptionTextBox = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.SubscribeButton = new System.Windows.Forms.Button();
+            this.UnsubscribeButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -177,11 +179,33 @@
             this.label8.TabIndex = 14;
             this.label8.Text = "Description";
             // 
+            // SubscribeButton
+            // 
+            this.SubscribeButton.Location = new System.Drawing.Point(856, 58);
+            this.SubscribeButton.Name = "SubscribeButton";
+            this.SubscribeButton.Size = new System.Drawing.Size(165, 45);
+            this.SubscribeButton.TabIndex = 16;
+            this.SubscribeButton.Text = "Subscribe";
+            this.SubscribeButton.UseVisualStyleBackColor = true;
+            this.SubscribeButton.Click += new System.EventHandler(this.SubscribeButton_Click);
+            // 
+            // UnsubscribeButton
+            // 
+            this.UnsubscribeButton.Location = new System.Drawing.Point(856, 156);
+            this.UnsubscribeButton.Name = "UnsubscribeButton";
+            this.UnsubscribeButton.Size = new System.Drawing.Size(165, 45);
+            this.UnsubscribeButton.TabIndex = 17;
+            this.UnsubscribeButton.Text = "Unsubscribe";
+            this.UnsubscribeButton.UseVisualStyleBackColor = true;
+            this.UnsubscribeButton.Click += new System.EventHandler(this.UnsubscribeButton_Click);
+            // 
             // UPVTubeShowContentDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(959, 525);
+            this.ClientSize = new System.Drawing.Size(1069, 559);
+            this.Controls.Add(this.UnsubscribeButton);
+            this.Controls.Add(this.SubscribeButton);
             this.Controls.Add(this.DescriptionTextBox);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.VisualizationsTextBox);
@@ -223,5 +247,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox DescriptionTextBox;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button SubscribeButton;
+        private System.Windows.Forms.Button UnsubscribeButton;
     }
 }

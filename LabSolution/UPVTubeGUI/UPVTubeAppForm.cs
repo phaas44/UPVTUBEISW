@@ -20,6 +20,7 @@ namespace UPVTubeGUI
         private UPVTubeUploadContentForm uploadContentForm;
         private PendingReviewContentForm pendingReviewContentForm;
         private UPVTubeSearchForm searchForm;
+        private UPVTubeShowContentDetails showContentDetailsForm;
         public UPVTubeAppForm(IUPVTubeService service)
         {
             InitializeComponent();
@@ -29,13 +30,7 @@ namespace UPVTubeGUI
 
         private void LoadData()
         {
-            
-            //service.AddSubscription("fjaen");
-            /*
-            Content cont = new Content("www.es.es","bla", false, "bla",DateTime.Now,fjaen);
-            List<int> sub = new List<int>();
-            service.UploadNewContent(cont,sub);
-            */
+
             Member logged = service.GetLoggedInMember();
             DateTime lastLogin = logged.LastAccessDate;
 
@@ -44,7 +39,7 @@ namespace UPVTubeGUI
             
             foreach (Member subscribed in logged.SubscribedTo)
             {
-                newContent.AddRange(service.SearchContent(lastLogin, DateTime.Now, subscribed.Nick, null, ""));
+                newContent.AddRange(service.SearchContent(lastLogin, DateTime.Now, subscribed.Nick, "", ""));
 
             }
 
@@ -107,6 +102,20 @@ namespace UPVTubeGUI
             searchForm = new UPVTubeSearchForm(service);
             searchForm.ShowDialog();
 
+        }
+
+        private void subscriptionsdataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = e.RowIndex;
+            DataGridViewRow row = subscriptionsdataGridView.Rows[index];
+            string cont_uri = row.Cells[1].Value.ToString();
+            try
+            {
+                Content content = service.GetContentDetails(cont_uri);
+                showContentDetailsForm = new UPVTubeShowContentDetails(service, content);
+                showContentDetailsForm.ShowDialog();
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
 
         /*
