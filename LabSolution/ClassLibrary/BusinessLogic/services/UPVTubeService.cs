@@ -328,7 +328,7 @@ namespace UPVTube.Services
         {
             if (this.Logged == null) { throw new ServiceException("Login first to unsubscribe."); }
 
-            if (Domains.IsStudentDomain(this.Logged.Email) || Domains.IsTeacherDomain(this.Logged.Email))
+            if (Domains.IsUPVMemberDomain(this.Logged.Email))
             {
 
                 Subscribed.Subscriptors.Remove(this.Logged);
