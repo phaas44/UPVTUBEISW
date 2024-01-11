@@ -30,6 +30,10 @@ namespace UPVTube.Entities
                 this.Authorized = Authorized.Pending;
             } 
         }
+        public void AddComment(Comment comment)
+        {
+            this.Comments.Add(comment);
+        }
 
         public void AddVisualization(Visualization v) {
             this.Visualizations.Add(v);

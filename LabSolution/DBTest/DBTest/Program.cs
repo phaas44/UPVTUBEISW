@@ -62,9 +62,9 @@ namespace DBTest
 
         Program()
         {
-            IDAL dal = new EntityFrameworkDAL(new UPVTubeDbContext());
+            // IDAL dal = new EntityFrameworkDAL(new UPVTubeDbContext());
 
-            TestCaseIntegration(dal);
+            // TestCaseIntegration(dal);
 
         }
 

@@ -26,6 +26,8 @@ namespace UPVTube.Services
         List<Content> GetAllPendingContents();
         void AddEvaluation(int contentId, string RejectionReason, bool rejected);
 
+        void AddComment(string comment, string nickname, Content c);
+
         Member GetLoggedInMember();
 
         List<Subject> GetAllSubjects();

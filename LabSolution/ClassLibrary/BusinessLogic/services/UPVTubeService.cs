@@ -258,23 +258,31 @@ namespace UPVTube.Services
 
         public List<Content> GetAllPendingContents()
         {
-            List<Content> list = null;
-            if (Domains.IsTeacherDomain(this.Logged.Email))
-            {
-                list = dal.GetWhere<Content>(c => c.Authorized == Authorized.Pending).ToList();
-
-            }
-            return list;
+            if (!Domains.IsTeacherDomain(this.Logged.Email)) throw new ServiceException("You must be a teacher to see content pending for review!");
+            
+            return dal.GetWhere<Content>(c => c.Authorized == Authorized.Pending).ToList();
+            return dal.GetWhere<Content>(c => c.Authorized == Authorized.Pending).ToList();
         }
         public void AddEvaluation(int contentId, string RejectionReason, bool rejected)
         {
-            if (rejected)
+            if (rejected) { }
+            else
             {
-
+                Content content = dal.GetById<Content>(contentId);
+                Evaluation eval = new Evaluation(DateTime.Now, RejectionReason, content.Owner, content);
+                content.Evaluation = eval;
             }
-            Content content = dal.GetById<Content>(contentId);
-            Evaluation eval = new Evaluation(DateTime.Now, RejectionReason, content.Owner, content);
-            content.Evaluation = eval;
+        }
+        public void AddComment(string text, string nickname, Content c)
+        {
+            Member member = dal.GetById<Member>(nickname);
+
+            Comment comment = new Comment(text, DateTime.Now, c, member);
+            c.AddComment(comment);
+            member.AddComment(comment);
+
+            dal.Insert<Comment>(comment);
+            dal.Commit();
         }
 
         public Member GetLoggedInMember()

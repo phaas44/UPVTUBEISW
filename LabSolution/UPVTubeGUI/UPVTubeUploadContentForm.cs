@@ -106,5 +106,10 @@ namespace UPVTubeGUI
         {
 
         }
+
+        private void CoursesCheckBoxList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
