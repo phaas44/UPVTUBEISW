@@ -93,13 +93,15 @@ namespace UPVTubeGUI
                         review = "Accepted";
 
                         selectedContent = ContentGrid.SelectedRows[0].Cells[6].Value as Content;
-                        service.AddEvaluation(selectedContent.Id, review, !contentApproved);
+                        service.AddEvaluation(selectedContent.Id, review, false);
                         MessageBox.Show("Content is accepted.");
+                        this.Close();
                     } else 
                     {
                         selectedContent = ContentGrid.SelectedRows[0].Cells[6].Value as Content;
                         service.AddEvaluation(selectedContent.Id, review, contentApproved);
                         MessageBox.Show("Content is rejected.");
+                        this.Close();
                     }
                 }
             }

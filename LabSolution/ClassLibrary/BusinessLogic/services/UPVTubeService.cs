@@ -63,7 +63,7 @@ namespace UPVTube.Services
             Member p4 = new Member("asdf@dsic.upv.es", "asdf", DateTime.Now, "asdf", "password");
             dal.Insert<Member>(p4);
 
-            Content c2 = new Content("A", "Inheritance driven polymorphism explained", false, "Polymorphism", DateTime.Now, p4);
+            Content c2 = new Content("Test", "Inheritance driven polymorphism explained", false, "Polymorphism", DateTime.Now, p4);
             p4.AddContent(c2);
             dal.Insert<Content>(c2);
 
@@ -277,6 +277,13 @@ namespace UPVTube.Services
             {
                 Content content = dal.GetById<Content>(contentId);
                 content.Authorized = Authorized.No;
+                dal.Commit();
+
+                Evaluation eval = new Evaluation(DateTime.Now, RejectionReason, this.Logged, content);
+                content.Evaluation = eval;
+
+                dal.Insert<Evaluation>(eval);
+                dal.Commit();
 
             }
             else
