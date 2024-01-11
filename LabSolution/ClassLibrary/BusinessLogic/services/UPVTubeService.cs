@@ -273,12 +273,21 @@ namespace UPVTube.Services
         }
         public void AddEvaluation(int contentId, string RejectionReason, bool rejected)
         {
-            if (rejected) { }
+            if (rejected) 
+            {
+                Content content = dal.GetById<Content>(contentId);
+                content.Authorized = Authorized.No;
+
+            }
             else
             {
                 Content content = dal.GetById<Content>(contentId);
-                Evaluation eval = new Evaluation(DateTime.Now, RejectionReason, content.Owner, content);
+                content.Authorized = Authorized.Yes;
+                Evaluation eval = new Evaluation(DateTime.Now, RejectionReason, this.Logged, content);
                 content.Evaluation = eval;
+
+                dal.Insert<Evaluation>(eval);
+                Commit();
             }
         }
         public void AddComment(string text, string nickname, Content c)

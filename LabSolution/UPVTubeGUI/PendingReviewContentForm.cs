@@ -81,7 +81,8 @@ namespace UPVTubeGUI
                 if (!radioButton1.Checked && !radioButton2.Checked)
                 {
                     MessageBox.Show("Please approve or reject the selected content!");
-                } else
+                } 
+                else
                 {
                     string review = textBox1.Text;
                     if (review.Length == 0 && !contentApproved)
@@ -90,12 +91,15 @@ namespace UPVTubeGUI
                     } else if (review.Length == 0 && contentApproved)
                     {
                         review = "Accepted";
+
+                        selectedContent = ContentGrid.SelectedRows[0].Cells[6].Value as Content;
+                        service.AddEvaluation(selectedContent.Id, review, !contentApproved);
+                        MessageBox.Show("Content is accepted.");
                     } else 
                     {
                         selectedContent = ContentGrid.SelectedRows[0].Cells[6].Value as Content;
-                        service.AddEvaluation(selectedContent.Id, review, !contentApproved);
-                        MessageBox.Show("Content successfully reviewed.");
-
+                        service.AddEvaluation(selectedContent.Id, review, contentApproved);
+                        MessageBox.Show("Content is rejected.");
                     }
                 }
             }
