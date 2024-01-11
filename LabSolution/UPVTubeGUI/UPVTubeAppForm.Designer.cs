@@ -207,7 +207,7 @@
             this.Name = "UPVTubeAppForm";
             this.Text = "UPVTubeLoggedInForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.UPVTubeAppForm_FormClosing);
-            this.Load += new System.EventHandler(this.UPVTubeAppForm_Load);
+            //this.Load += new System.EventHandler(this.UPVTubeAppForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.subscriptionsdataGridView)).EndInit();

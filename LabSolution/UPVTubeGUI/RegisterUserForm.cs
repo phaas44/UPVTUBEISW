@@ -40,6 +40,7 @@ namespace UPVTubeGUI
             {
                 service.RegisterNewUser(email, fullName, nick, password);
                 MessageBox.Show("You have registered successfully!");
+                this.Close();
 
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }

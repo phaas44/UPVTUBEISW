@@ -277,7 +277,6 @@ namespace UPVTube.Services
             {
                 Content content = dal.GetById<Content>(contentId);
                 content.Authorized = Authorized.No;
-                dal.Commit();
 
                 Evaluation eval = new Evaluation(DateTime.Now, RejectionReason, this.Logged, content);
                 content.Evaluation = eval;
