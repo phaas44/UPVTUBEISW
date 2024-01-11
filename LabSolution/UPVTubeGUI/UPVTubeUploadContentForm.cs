@@ -101,6 +101,11 @@ namespace UPVTubeGUI
             
         }
 
+        private void UPVTubeUploadContentForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
         private void CoursesCheckBoxList_SelectedIndexChanged(object sender, EventArgs e)
         {
 

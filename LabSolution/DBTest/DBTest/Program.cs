@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using UPVTube.Entities;
 using UPVTube.Persistence;
 using UPVTube.Services;
+using System.ComponentModel.DataAnnotations;
 
 namespace DBTest
 {
@@ -142,7 +143,12 @@ namespace DBTest
             service.Commit();
 
             Console.WriteLine("DB initialized");
-            
+
+            string email = "bla";
+            IEnumerable<Member> result = dal.GetWhere<Member>(m => m.Email == email);
+
+            Console.WriteLine(result);
+
         }
     }
 }

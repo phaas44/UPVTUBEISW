@@ -48,7 +48,7 @@ namespace UPVTube.Services
             Member a1 = new Member("member.student@inf.upv.es", "Member Student", DateTime.Now, "MemberStudent", "1234");
             dal.Insert<Member>(a1); //adding to the DBset 
 
-            Content c1 = new Content("http://fake.uri.es", "Inheritance driven polymorphism explained", true, "Polymorphism", DateTime.Now, a1);
+            Content c1 = new Content("fake.uri.es", "Inheritance driven polymorphism explained", true, "Polymorphism", DateTime.Now, a1);
             a1.AddContent(c1);
             dal.Insert<Content>(c1);
 
@@ -59,6 +59,13 @@ namespace UPVTube.Services
             //Create a professor
             Member p1 = new Member("fjaen@dsic.upv.es", "Javier Jaen", DateTime.Now, "fjaen", "password");
             dal.Insert<Member>(p1);
+
+            Member p4 = new Member("asdf@dsic.upv.es", "asdf", DateTime.Now, "asdf", "password");
+            dal.Insert<Member>(p4);
+
+            Content c2 = new Content("Test", "Inheritance driven polymorphism explained", false, "Polymorphism", DateTime.Now, p4);
+            p4.AddContent(c2);
+            dal.Insert<Content>(c2);
 
             //Create user not member of UPV
             Member p2 = new Member("notmember@gmail.com", "NotMember Person", DateTime.Now, "NotMember", "1234");
@@ -118,7 +125,7 @@ namespace UPVTube.Services
             //Check if Member nick or email is not already in the system
             if (dal.GetById<Member>(nick) == null)
             {
-                if (dal.GetWhere<Member>(m => m.Email == email) == null)
+                if (!dal.GetWhere<Member>(m => m.Email == email).Any())
                 {
                     DateTime date = DateTime.Now;
                     Member newMember = new Member(email, name, date, nick, password);
@@ -144,13 +151,15 @@ namespace UPVTube.Services
 
             Member user = dal.GetById<Member>(nick);
 
+            if(user.Nick != nick) { throw new ServiceException("Provided nick or password is wrong!"); }
+
             //Check if user is not registered: throw error
             if (user == null)
             {
                 throw new ServiceException("Member not registered!");
             }
 
-            //User is registered: ask for credentials
+           //User is registered: ask for credentials
             
             if (user.Password != password)
             {
@@ -227,6 +236,7 @@ namespace UPVTube.Services
             }
 
             List<Content> c = dal.GetWhere<Content>(cn => cn.Authorized == Authorized.Yes).ToList();
+            
             if (Start != null && End != null)
             {
                 c = c.Where(cn => cn.UploadDate < End && cn.UploadDate > Start).ToList();
@@ -234,20 +244,29 @@ namespace UPVTube.Services
             }
             if (nick != "")
             {
-                c = c.Where(cn => cn.Owner.Nick == nick).ToList();
+                c = c.Where(cn => cn.Owner.Nick.ToLower().Contains(nick.ToLower())).ToList();
             }
             if (title != "")
             {
-                c = c.Where(cn => cn.Title == title).ToList();
+                c = c.Where(cn => cn.Title.ToLower().Contains(title.ToLower())).ToList();
             }
             if (subject != "")
             {
                 c = c.Where(cn => cn.Subjects.Any(s => s.Name.Contains(subject))).ToList();
             }
+
             if (!Domains.IsUPVMemberDomain(this.Logged.Email))
             {
-                c.Where(cn => cn.IsPublic).ToList();
-                return c;
+                List<Content> result = new List<Content>();
+
+                //Is a bad solution but .Where() doesnt work.
+                foreach(Content cont in c)
+                {
+                    if(cont.IsPublic) { result.Add(cont); }
+                }
+
+                //c.Where(cn => cn.IsPublic).ToList();
+                return result;
             }
             else
             {
@@ -261,16 +280,30 @@ namespace UPVTube.Services
             if (!Domains.IsTeacherDomain(this.Logged.Email)) throw new ServiceException("You must be a teacher to see content pending for review!");
             
             return dal.GetWhere<Content>(c => c.Authorized == Authorized.Pending).ToList();
-            return dal.GetWhere<Content>(c => c.Authorized == Authorized.Pending).ToList();
         }
-        public void AddEvaluation(int contentId, string RejectionReason, bool rejected)
+        public void AddEvaluation(int contentId, string RejectionReason, bool accepted)
         {
-            if (rejected) { }
+            if (!accepted) 
+            {
+                Content content = dal.GetById<Content>(contentId);
+                content.Authorized = Authorized.No;
+
+                Evaluation eval = new Evaluation(DateTime.Now, RejectionReason, this.Logged, content);
+                content.Evaluation = eval;
+
+                dal.Insert<Evaluation>(eval);
+                dal.Commit();
+
+            }
             else
             {
                 Content content = dal.GetById<Content>(contentId);
-                Evaluation eval = new Evaluation(DateTime.Now, RejectionReason, content.Owner, content);
+                content.Authorized = Authorized.Yes;
+                Evaluation eval = new Evaluation(DateTime.Now, RejectionReason, this.Logged, content);
                 content.Evaluation = eval;
+
+                dal.Insert<Evaluation>(eval);
+                Commit();
             }
         }
         public void AddComment(string text, string nickname, Content c)
@@ -308,6 +341,73 @@ namespace UPVTube.Services
         public bool IsStudent()
         {
             return Domains.IsStudentDomain(this.Logged.Email);
+        }
+
+        //Only Suscribed needed since only a loged in person can subscribe.
+        public void AddSubscription(string nickSubscribed)
+        {
+            if(this.Logged == null) { throw new ServiceException("Login first to subscribe."); }
+
+            Member Subscribed = dal.GetById<Member>(nickSubscribed);
+
+            if(Subscribed == null) { throw new ServiceException("Subscribed person does not exist."); }
+            
+            if(Domains.IsUPVMemberDomain(this.Logged.Email))
+            {
+                if (this.Logged.SubscribedTo.Any(m => m.Nick == Subscribed.Nick)) { throw new ServiceException("You alraedy subscribed to this content creator."); }
+
+                else
+                {
+                    Subscribed.Subscriptors.Add(this.Logged);
+                    this.Logged.SubscribedTo.Add(Subscribed);
+                    Commit();
+
+                }
+
+            }
+
+            else { throw new ServiceException("Logged in user is not an UPV member."); }
+        }
+
+        public void RemoveSubscription(string nickSubscribed)
+        {
+            if (this.Logged == null) { throw new ServiceException("Login first to unsubscribe."); }
+            
+            if(!this.Logged.SubscribedTo.Any(m => m.Nick == nickSubscribed))
+            {
+                throw new ServiceException("Logged in user did not subscribe to this content creator.");
+            }
+            Member Subscribed = dal.GetById<Member>(nickSubscribed);
+
+            if( Subscribed == null) { throw new ServiceException("Subscribed person does not exist."); }
+
+            if (Domains.IsUPVMemberDomain(this.Logged.Email))
+            {
+
+                Subscribed.Subscriptors.Remove(this.Logged);
+                
+                this.Logged.SubscribedTo.Remove(Subscribed);
+
+                Commit();
+            }
+
+            else { throw new ServiceException("Logged in user is not an UPV member."); }
+        }
+
+        public Content GetContentDetails(string contentId)
+        {
+            List<Content> contents = new List<Content>();
+            contents.AddRange(dal.GetWhere<Content>(c => c.ContentURI== contentId).ToList()); 
+
+            if(contents.Count > 1) { throw new ServiceException("There are multiple contents with the same URI!"); }
+            
+            if (contents[0] == null) { throw new ServiceException("Content for according contentID cannot be found."); }
+
+            Visualization v = new Visualization(DateTime.Now, contents[0],this.Logged);
+            contents[0].AddVisualization(v);
+            Commit();
+
+            return contents[0];
         }
 
 

@@ -16,7 +16,10 @@ namespace UPVTubeGUI
         private IUPVTubeService service;
 
         private UPVTubeAppForm loggedInForm;
+
+        private RegisterUserForm registerUserForm;
         
+
         public UPVTubeLoginForm(IUPVTubeService service)
         {
             InitializeComponent();
@@ -73,9 +76,9 @@ namespace UPVTubeGUI
 
         private void RegisterButton_Click(object sender, EventArgs e)
         {
-
-     
-
+            registerUserForm = new RegisterUserForm(service);
+            registerUserForm.ShowDialog();
+            
         }
 
         private void CreateSampleDBStrip_Click(object sender, EventArgs e)

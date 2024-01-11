@@ -67,7 +67,7 @@ namespace UPVTubeGUI
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
-            contentApproved = false;
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -78,22 +78,34 @@ namespace UPVTubeGUI
             }
             else
             {
-                if (!radioButton1.Checked && !radioButton2.Checked)
+                if (!ApproveButton.Checked && !RejectButton.Checked)
                 {
                     MessageBox.Show("Please approve or reject the selected content!");
-                } else
+                } 
+                else
                 {
+                    if (ApproveButton.Checked)
+                    {
+                        contentApproved = true;
+                    }
+                    else
+                    {
+                        contentApproved = false;
+                    }
                     string review = textBox1.Text;
                     if (review.Length == 0 && !contentApproved)
                     {
                         MessageBox.Show("You must provide a justification in case of rejection!");
-                    } else if (review.Length == 0 && contentApproved)
+                    } else
                     {
-                        review = "Accepted";
-                    } else 
-                    {
+                        if (review.Length == 0) { review = "Accepted"; }
+                        
                         selectedContent = ContentGrid.SelectedRows[0].Cells[6].Value as Content;
-                        service.AddEvaluation(selectedContent.Id, review, !contentApproved);
+                        service.AddEvaluation(selectedContent.Id, review, contentApproved);
+                        string nick = selectedContent.Owner.Nick;
+                        MessageBox.Show($"Email sent to {nick}");
+                        this.Close();
+
                     }
                 }
             }
@@ -106,7 +118,7 @@ namespace UPVTubeGUI
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-            contentApproved = true;
+            
         }
 
         private void button3_Click(object sender, EventArgs e)

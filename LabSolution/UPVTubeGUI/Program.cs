@@ -17,7 +17,7 @@ namespace UPVTubeGUI
         static void Main()
         {
             IUPVTubeService service = new UPVTubeService(new EntityFrameworkDAL(new UPVTubeDbContext()));
-            service.DBInitialization();
+            //service.DBInitialization();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new UPVTubeLoginForm(service));

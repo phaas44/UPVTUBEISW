@@ -80,6 +80,12 @@
     <Compile Include="PendingReviewContentForm.Designer.cs">
       <DependentUpon>PendingReviewContentForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="RegisterUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegisterUserForm.Designer.cs">
+      <DependentUpon>RegisterUserForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UPVTubeLoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +99,18 @@
     </Compile>
     <Compile Include="UPVTubeAppForm.Designer.cs">
       <DependentUpon>UPVTubeAppForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UPVTubeSearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UPVTubeSearchForm.Designer.cs">
+      <DependentUpon>UPVTubeSearchForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UPVTubeShowContentDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UPVTubeShowContentDetails.Designer.cs">
+      <DependentUpon>UPVTubeShowContentDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="UPVTubeUploadContentForm.cs">
       <SubType>Form</SubType>
@@ -118,11 +136,20 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="RegisterUserForm.resx">
+      <DependentUpon>RegisterUserForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UPVTubeLoginForm.resx">
       <DependentUpon>UPVTubeLoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UPVTubeAppForm.resx">
       <DependentUpon>UPVTubeAppForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UPVTubeSearchForm.resx">
+      <DependentUpon>UPVTubeSearchForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UPVTubeShowContentDetails.resx">
+      <DependentUpon>UPVTubeShowContentDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UPVTubeUploadContentForm.resx">
       <DependentUpon>UPVTubeUploadContentForm.cs</DependentUpon>
