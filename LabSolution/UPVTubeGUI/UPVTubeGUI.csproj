@@ -56,6 +56,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddReviewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddReviewForm.Designer.cs">
+      <DependentUpon>AddReviewForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DisplayContentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DisplayContentForm.Designer.cs">
+      <DependentUpon>DisplayContentForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="NewSubjectForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,8 +100,14 @@
     <Compile Include="UPVTubeUploadContentForm.Designer.cs">
       <DependentUpon>UPVTubeUploadContentForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="DisplayContentForm.resx">
+      <DependentUpon>DisplayContentForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="NewSubjectForm.resx">
       <DependentUpon>NewSubjectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PendingReviewContentForm.resx">
+      <DependentUpon>PendingReviewContentForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

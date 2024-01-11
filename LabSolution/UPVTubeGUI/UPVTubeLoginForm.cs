@@ -54,6 +54,8 @@ namespace UPVTubeGUI
             {
                 service.LoginUser(nickname, password);
                 MessageBox.Show("Login Successful!");
+                NicknameInput.Clear();
+                PasswordInput.Clear();
 
                 //Create next displayed form.
                 loggedInForm = new UPVTubeAppForm(service);
@@ -93,6 +95,11 @@ namespace UPVTubeGUI
         private void ExitStrip_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void NicknameInput_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
