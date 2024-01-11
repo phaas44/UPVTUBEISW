@@ -45,10 +45,10 @@
             // 
             // LoginButton
             // 
-            this.LoginButton.Location = new System.Drawing.Point(488, 270);
+            this.LoginButton.Location = new System.Drawing.Point(549, 338);
             this.LoginButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.LoginButton.Name = "LoginButton";
-            this.LoginButton.Size = new System.Drawing.Size(180, 60);
+            this.LoginButton.Size = new System.Drawing.Size(202, 75);
             this.LoginButton.TabIndex = 0;
             this.LoginButton.Text = "Login";
             this.LoginButton.UseVisualStyleBackColor = true;
@@ -56,10 +56,10 @@
             // 
             // RegisterButton
             // 
-            this.RegisterButton.Location = new System.Drawing.Point(29, 284);
+            this.RegisterButton.Location = new System.Drawing.Point(33, 355);
             this.RegisterButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.RegisterButton.Name = "RegisterButton";
-            this.RegisterButton.Size = new System.Drawing.Size(165, 46);
+            this.RegisterButton.Size = new System.Drawing.Size(186, 58);
             this.RegisterButton.TabIndex = 1;
             this.RegisterButton.Text = "Register";
             this.RegisterButton.UseVisualStyleBackColor = true;
@@ -68,9 +68,9 @@
             // LoginLabel
             // 
             this.LoginLabel.AutoSize = true;
-            this.LoginLabel.Location = new System.Drawing.Point(284, 39);
+            this.LoginLabel.Location = new System.Drawing.Point(320, 49);
             this.LoginLabel.Name = "LoginLabel";
-            this.LoginLabel.Size = new System.Drawing.Size(108, 17);
+            this.LoginLabel.Size = new System.Drawing.Size(121, 20);
             this.LoginLabel.TabIndex = 2;
             this.LoginLabel.Text = "UPVTube Login";
             this.LoginLabel.Click += new System.EventHandler(this.label1_Click);
@@ -78,47 +78,49 @@
             // NicknameText
             // 
             this.NicknameText.AutoSize = true;
-            this.NicknameText.Location = new System.Drawing.Point(38, 90);
+            this.NicknameText.Location = new System.Drawing.Point(43, 112);
             this.NicknameText.Name = "NicknameText";
-            this.NicknameText.Size = new System.Drawing.Size(70, 17);
+            this.NicknameText.Size = new System.Drawing.Size(79, 20);
             this.NicknameText.TabIndex = 3;
             this.NicknameText.Text = "Nickname";
             // 
             // PasswordText
             // 
             this.PasswordText.AutoSize = true;
-            this.PasswordText.Location = new System.Drawing.Point(39, 137);
+            this.PasswordText.Location = new System.Drawing.Point(44, 171);
             this.PasswordText.Name = "PasswordText";
-            this.PasswordText.Size = new System.Drawing.Size(69, 17);
+            this.PasswordText.Size = new System.Drawing.Size(78, 20);
             this.PasswordText.TabIndex = 4;
             this.PasswordText.Text = "Password";
             // 
             // NicknameInput
             // 
-            this.NicknameInput.Location = new System.Drawing.Point(153, 86);
+            this.NicknameInput.Location = new System.Drawing.Point(172, 108);
             this.NicknameInput.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.NicknameInput.Name = "NicknameInput";
-            this.NicknameInput.Size = new System.Drawing.Size(432, 22);
+            this.NicknameInput.Size = new System.Drawing.Size(486, 26);
             this.NicknameInput.TabIndex = 5;
             this.NicknameInput.TextChanged += new System.EventHandler(this.NicknameInput_TextChanged);
             // 
             // PasswordInput
             // 
-            this.PasswordInput.Location = new System.Drawing.Point(153, 137);
+            this.PasswordInput.Location = new System.Drawing.Point(172, 171);
             this.PasswordInput.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PasswordInput.Name = "PasswordInput";
-            this.PasswordInput.Size = new System.Drawing.Size(432, 22);
+            this.PasswordInput.Size = new System.Drawing.Size(486, 26);
             this.PasswordInput.TabIndex = 6;
+            this.PasswordInput.UseSystemPasswordChar = true;
             // 
             // MenuStrip
             // 
+            this.MenuStrip.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.MenuStrip.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.MenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.SystemStrip});
             this.MenuStrip.Location = new System.Drawing.Point(0, 0);
             this.MenuStrip.Name = "MenuStrip";
-            this.MenuStrip.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.MenuStrip.Size = new System.Drawing.Size(711, 28);
+            this.MenuStrip.Padding = new System.Windows.Forms.Padding(6, 2, 0, 2);
+            this.MenuStrip.Size = new System.Drawing.Size(800, 33);
             this.MenuStrip.TabIndex = 7;
             this.MenuStrip.Text = "menuStrip1";
             // 
@@ -129,35 +131,35 @@
             this.DeleteDBStrip,
             this.ExitStrip});
             this.SystemStrip.Name = "SystemStrip";
-            this.SystemStrip.Size = new System.Drawing.Size(70, 24);
+            this.SystemStrip.Size = new System.Drawing.Size(85, 29);
             this.SystemStrip.Text = "System";
             // 
             // CreateSampleDBStrip
             // 
             this.CreateSampleDBStrip.Name = "CreateSampleDBStrip";
-            this.CreateSampleDBStrip.Size = new System.Drawing.Size(247, 26);
+            this.CreateSampleDBStrip.Size = new System.Drawing.Size(296, 34);
             this.CreateSampleDBStrip.Text = "Create New Sample DB";
             this.CreateSampleDBStrip.Click += new System.EventHandler(this.CreateSampleDBStrip_Click);
             // 
             // DeleteDBStrip
             // 
             this.DeleteDBStrip.Name = "DeleteDBStrip";
-            this.DeleteDBStrip.Size = new System.Drawing.Size(247, 26);
+            this.DeleteDBStrip.Size = new System.Drawing.Size(296, 34);
             this.DeleteDBStrip.Text = "Delete DB";
             this.DeleteDBStrip.Click += new System.EventHandler(this.DeleteDBStrip_Click);
             // 
             // ExitStrip
             // 
             this.ExitStrip.Name = "ExitStrip";
-            this.ExitStrip.Size = new System.Drawing.Size(247, 26);
+            this.ExitStrip.Size = new System.Drawing.Size(296, 34);
             this.ExitStrip.Text = "Exit";
             this.ExitStrip.Click += new System.EventHandler(this.ExitStrip_Click);
             // 
             // UPVTubeLoginForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(711, 360);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.PasswordInput);
             this.Controls.Add(this.NicknameInput);
             this.Controls.Add(this.PasswordText);

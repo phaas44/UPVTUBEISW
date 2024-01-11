@@ -75,6 +75,12 @@ namespace UPVTubeGUI
             else MessageBox.Show("You must be a teacher to see content pending for review!");
         }
 
+        private void UPVTubeAppForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            service.LogoutUser();
+            MessageBox.Show("Logged out.");
+        }
+
         private void LogoutStrip_Click(object sender, EventArgs e)
         {
             this.Close(); //Automatically logs out since UPVTubeAppForm_FormClosing is called.
@@ -84,16 +90,6 @@ namespace UPVTubeGUI
         {
             uploadContentForm = new UPVTubeUploadContentForm(service);
             uploadContentForm.ShowDialog();
-        }
-
-        private void ViewPendingContentStrip_Click(object sender, EventArgs e)
-        {
-            if (service.IsProfessor())
-            {
-                pendingReviewContentForm = new PendingReviewContentForm(service);
-                pendingReviewContentForm.ShowDialog();
-            }
-            else MessageBox.Show("You must be a teacher to see content pending for review!");
         }
 
         private void label1_Click(object sender, EventArgs e)
