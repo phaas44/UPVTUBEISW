@@ -94,7 +94,8 @@ namespace UPVTubeGUI
                     ds_URI = c.ContentURI,
                     ds_Description = c.Description,
                     ds_UploadDate = c.UploadDate,
-                    ds_Owner = c.Owner.Nick
+                    ds_Owner = c.Owner.Nick,
+                    ds_Public = c.IsPublic.ToString(),
                 });
 
             SearchbindingSource.DataSource = bindinglist;
