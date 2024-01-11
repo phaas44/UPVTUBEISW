@@ -15,7 +15,8 @@ namespace UPVTubeGUI
     public partial class UPVTubeSearchForm : Form
     {
         private IUPVTubeService service;
-        private UPVTubeShowContentDetails showdetails;
+        //private UPVTubeShowContentDetails showdetails;
+        private DisplayContentForm displayContentForm;
         public UPVTubeSearchForm(IUPVTubeService service)
         {
             this.service = service;
@@ -129,8 +130,14 @@ namespace UPVTubeGUI
             try
             {
                 Content content = service.GetContentDetails(cont_uri);
+
+                displayContentForm = new DisplayContentForm(service, content);
+                displayContentForm.ShowDialog();
+
+                /*
                 showdetails = new UPVTubeShowContentDetails(service, content);
                 showdetails.ShowDialog();
+                */
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
 

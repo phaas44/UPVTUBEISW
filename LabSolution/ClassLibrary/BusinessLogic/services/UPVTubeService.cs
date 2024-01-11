@@ -270,7 +270,6 @@ namespace UPVTube.Services
             if (!Domains.IsTeacherDomain(this.Logged.Email)) throw new ServiceException("You must be a teacher to see content pending for review!");
             
             return dal.GetWhere<Content>(c => c.Authorized == Authorized.Pending).ToList();
-            return dal.GetWhere<Content>(c => c.Authorized == Authorized.Pending).ToList();
         }
         public void AddEvaluation(int contentId, string RejectionReason, bool rejected)
         {
@@ -378,6 +377,10 @@ namespace UPVTube.Services
             if(contents.Count > 1) { throw new ServiceException("There are multiple contents with the same URI!"); }
             
             if (contents[0] == null) { throw new ServiceException("Content for according contentID cannot be found."); }
+
+            Visualization v = new Visualization(DateTime.Now, contents[0],this.Logged);
+            contents[0].AddVisualization(v);
+            Commit();
 
             return contents[0];
         }

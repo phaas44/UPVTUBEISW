@@ -94,6 +94,8 @@ namespace UPVTubeGUI
                     {
                         selectedContent = ContentGrid.SelectedRows[0].Cells[6].Value as Content;
                         service.AddEvaluation(selectedContent.Id, review, !contentApproved);
+                        MessageBox.Show("Content successfully reviewed.");
+
                     }
                 }
             }
