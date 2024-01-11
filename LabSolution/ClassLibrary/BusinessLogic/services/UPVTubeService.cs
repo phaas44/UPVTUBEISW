@@ -151,13 +151,15 @@ namespace UPVTube.Services
 
             Member user = dal.GetById<Member>(nick);
 
+            if(user.Nick != nick) { throw new ServiceException("Provided nick or password is wrong!"); }
+
             //Check if user is not registered: throw error
             if (user == null)
             {
                 throw new ServiceException("Member not registered!");
             }
 
-            //User is registered: ask for credentials
+           //User is registered: ask for credentials
             
             if (user.Password != password)
             {
@@ -242,21 +244,29 @@ namespace UPVTube.Services
             }
             if (nick != "")
             {
-                c = c.Where(cn => cn.Owner.Nick == nick).ToList();
+                c = c.Where(cn => cn.Owner.Nick.ToLower().Contains(nick.ToLower())).ToList();
             }
             if (title != "")
             {
-                c = c.Where(cn => cn.Title.Contains(title)).ToList();
+                c = c.Where(cn => cn.Title.ToLower().Contains(title.ToLower())).ToList();
             }
             if (subject != "")
             {
                 c = c.Where(cn => cn.Subjects.Any(s => s.Name.Contains(subject))).ToList();
             }
+
             if (!Domains.IsUPVMemberDomain(this.Logged.Email))
             {
-                //throw new ServiceException("Searcher not part of UPV.");
-                c.Where(cn => cn.IsPublic).ToList();
-                return c;
+                List<Content> result = new List<Content>();
+
+                //Is a bad solution but .Where() doesnt work.
+                foreach(Content cont in c)
+                {
+                    if(cont.IsPublic) { result.Add(cont); }
+                }
+
+                //c.Where(cn => cn.IsPublic).ToList();
+                return result;
             }
             else
             {
@@ -271,9 +281,9 @@ namespace UPVTube.Services
             
             return dal.GetWhere<Content>(c => c.Authorized == Authorized.Pending).ToList();
         }
-        public void AddEvaluation(int contentId, string RejectionReason, bool rejected)
+        public void AddEvaluation(int contentId, string RejectionReason, bool accepted)
         {
-            if (rejected) 
+            if (!accepted) 
             {
                 Content content = dal.GetById<Content>(contentId);
                 content.Authorized = Authorized.No;

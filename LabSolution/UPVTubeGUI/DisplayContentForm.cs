@@ -15,8 +15,8 @@ namespace UPVTubeGUI
 {
     public partial class DisplayContentForm : Form
     {
-        IUPVTubeService service;
-        Content displayedContent;
+        private IUPVTubeService service;
+        private Content displayedContent;
 
         public DisplayContentForm(IUPVTubeService service, Content c)
         {
@@ -29,6 +29,19 @@ namespace UPVTubeGUI
             DescriptionText.Text = c.Description;
             DateText.Text = c.UploadDate.ToString();
             URIText.Text = c.ContentURI;
+
+            DisplayComments();
+        }
+
+        private void DisplayComments()
+        {
+            List<Comment> comments = displayedContent.Comments.ToList();
+
+            foreach (Comment com in comments)
+            {
+                string res = com.Writer.Nick + ": " + com.Text; 
+                CommentsListView.Items.Insert(0, res);
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -60,9 +73,29 @@ namespace UPVTubeGUI
             {
                 string nickname = service.GetLoggedInMember().Nick;
                 service.AddComment(CommentText.Text, nickname, this.displayedContent);
+                CommentsListView.Items.Insert(0, nickname + ": " + CommentText.Text);
                 MessageBox.Show("Your comment has been added!");
                 CommentText.Clear();
             }
+
+
+        }
+
+        private void SubscribeButton_Click(object sender, EventArgs e)
+        {
+            this.service.AddSubscription(this.displayedContent.Owner.Nick);
+            MessageBox.Show("Successfully subscribed.");
+        }
+
+        private void UnsunscribeButton_Click(object sender, EventArgs e)
+        {
+            this.service.RemoveSubscription(this.displayedContent.Owner.Nick);
+            MessageBox.Show("Successfully unsubscribed.");
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -43,6 +43,7 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.SearchbindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.URI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Public = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Owner = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UploadDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -152,6 +153,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.URI,
+            this.Public,
             this.Title,
             this.Owner,
             this.UploadDate,
@@ -178,6 +180,15 @@
             this.URI.Name = "URI";
             this.URI.ReadOnly = true;
             this.URI.Width = 150;
+            // 
+            // Public
+            // 
+            this.Public.DataPropertyName = "ds_Public";
+            this.Public.HeaderText = "Public";
+            this.Public.MinimumWidth = 8;
+            this.Public.Name = "Public";
+            this.Public.ReadOnly = true;
+            this.Public.Width = 150;
             // 
             // Title
             // 
@@ -257,6 +268,7 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.BindingSource SearchbindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn URI;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Public;
         private System.Windows.Forms.DataGridViewTextBoxColumn Title;
         private System.Windows.Forms.DataGridViewTextBoxColumn Owner;
         private System.Windows.Forms.DataGridViewTextBoxColumn UploadDate;

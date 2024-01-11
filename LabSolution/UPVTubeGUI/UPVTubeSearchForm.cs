@@ -27,6 +27,7 @@ namespace UPVTubeGUI
 
         private void LoadData()
         {
+            StartDatePicker.Value = DateTime.Now.AddDays(-1);
             CoursesCheckBoxList.Items.Clear();
             ICollection<Subject> subjects = service.GetAllSubjects();
             if (subjects != null)
@@ -63,6 +64,7 @@ namespace UPVTubeGUI
             List<Content> searchedContent = new List<Content>();   
             try
             {
+
                 if(courses.Count > 0) 
                 {
                     foreach (string course in courses)
@@ -85,6 +87,7 @@ namespace UPVTubeGUI
             BindingList<object> bindinglist = new BindingList<object>();
             foreach (Content c in searchedContent)
 
+
                 //Adding one anonymous object for each reservation obtained
                 bindinglist.Add(new
                 {
@@ -95,7 +98,7 @@ namespace UPVTubeGUI
                     ds_Description = c.Description,
                     ds_UploadDate = c.UploadDate,
                     ds_Owner = c.Owner.Nick,
-                    ds_Public = c.IsPublic.ToString(),
+                    ds_Public = c.IsPublic.ToString()
                 });
 
             SearchbindingSource.DataSource = bindinglist;

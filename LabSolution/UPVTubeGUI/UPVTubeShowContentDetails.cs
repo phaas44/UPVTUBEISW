@@ -63,14 +63,30 @@ namespace UPVTubeGUI
 
         private void SubscribeButton_Click(object sender, EventArgs e)
         {
-            this.service.AddSubscription(this.content.Owner.Nick);
-            MessageBox.Show("Successfully subscribed.");
+            try 
+            {
+                this.service.AddSubscription(this.content.Owner.Nick);
+                MessageBox.Show("Successfully subscribed.");
+            }
+            catch(Exception ex) {
+                
+                MessageBox.Show(ex.Message);
+            }
+            
         }
 
         private void UnsubscribeButton_Click(object sender, EventArgs e)
         {
-            this.service.RemoveSubscription(this.content.Owner.Nick);
-            MessageBox.Show("Successfully unsubscribed.");
+            try
+            {
+                this.service.RemoveSubscription(this.content.Owner.Nick);
+                MessageBox.Show("Successfully unsubscribed.");
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
