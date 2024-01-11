@@ -43,8 +43,12 @@ namespace UPVTubeGUI
 
         private void ViewPendingContentStrip_Click(object sender, EventArgs e)
         {
-            pendingReviewContentForm = new PendingReviewContentForm(service);
-            pendingReviewContentForm.ShowDialog();
+            if (service.IsProfessor())
+            {
+                pendingReviewContentForm = new PendingReviewContentForm(service);
+                pendingReviewContentForm.ShowDialog();
+            }
+            else MessageBox.Show("You must be a teacher to see content pending for review!");
         }
 
         /*
