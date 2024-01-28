@@ -56,7 +56,7 @@ namespace UPVTubeGUI
             try
             {
                 service.LoginUser(nickname, password);
-                MessageBox.Show("Login Successful!");
+                //MessageBox.Show("Login Successful!");
                 NicknameInput.Clear();
                 PasswordInput.Clear();
 
