@@ -88,8 +88,17 @@ namespace UPVTubeGUI
 
         private void UploadContentStrip_Click(object sender, EventArgs e)
         {
-            uploadContentForm = new UPVTubeUploadContentForm(service);
-            uploadContentForm.ShowDialog();
+            if(service.IsStudent() || service.IsProfessor())
+            {
+                uploadContentForm = new UPVTubeUploadContentForm(service);
+                uploadContentForm.ShowDialog();
+            }
+
+            else
+            {
+                MessageBox.Show("You don't have the necessary preveliges. Only UPV members can upload content.");
+            }
+            
         }
 
         private void label1_Click(object sender, EventArgs e)
