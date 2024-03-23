@@ -1,20 +1,14 @@
+# UPVTube Software Engineering Project
 # Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+This repository contains the project work conducted during my exchange semester in fall 2024 at Universidad Politécnica de Valencia (UPV). In a group of three students, we leveraged the tools of Microsoft Azure DevOps. For our collaborative routines, we implemented an agile working procedure. My personal key learnings from that project were:
+- [UML Class Diagram Modelling]
+- [Usage of Microsoft Azure DevOps for organizing work in a group]
+- [Implementing of SCRUM/agile methodologies]
+- [Entity Framework]
+- [Windows Forms for GUI]
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+# Task formulation
+The task formulation was given as plain text. From this, we had to extract the UML Class Diagrams and the Use Cases. For interested readers, the task description can be found here.
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
-
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
-
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+# Future Work
+So far, a functioning application that meets the given requirements has been provided. However, I want to push this project further and use the existing code base as a backend. The idea would be to connect this existing backend to a yet-to-be-developed frontend via an API.
